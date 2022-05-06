@@ -1,0 +1,83 @@
+% This file was created with tikzplotlib v0.9.16.
+\begin{tikzpicture}
+
+\begin{axis}[
+    height=11cm,
+    tick align=inside,
+    major tick length=0.2cm,
+    minor tick length=0.1cm,
+    tick pos=left,
+    xmin=-4.1, xmax=4.1,
+    xtick={-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5},
+    minor x tick num=4,
+    xmajorgrids,
+    minor x grid style={dotted,black},
+    xminorgrids,
+    xtick style={color=black},
+    xlabel={$m$},
+    ymin=-1.2, ymax=1.2,
+    ytick={-1.5, -1, -0.5, 0, 0.5, 1, 1.5},
+    minor y tick num=4,
+    ymajorgrids,
+    minor y grid style={dotted,black},
+    yminorgrids,
+    ytick style={color=black},
+    ylabel={$x_m$, мм}
+]
+\path [draw=red, semithick]
+(axis cs:1,0.14)
+--(axis cs:1,0.18);
+
+\path [draw=red, semithick]
+(axis cs:2,0.48)
+--(axis cs:2,0.52);
+
+\path [draw=red, semithick]
+(axis cs:3,0.7)
+--(axis cs:3,0.74);
+
+\path [draw=red, semithick]
+(axis cs:4,1.02)
+--(axis cs:4,1.06);
+
+\path [draw=red, semithick]
+(axis cs:-1,-0.18)
+--(axis cs:-1,-0.14);
+
+\path [draw=red, semithick]
+(axis cs:-2,-0.5)
+--(axis cs:-2,-0.46);
+
+\path [draw=red, semithick]
+(axis cs:-3,-0.74)
+--(axis cs:-3,-0.7);
+
+\path [draw=red, semithick]
+(axis cs:-4,-1.08)
+--(axis cs:-4,-1.04);
+
+\addplot [semithick, black]
+table {%
+1 0.249999999998364
+2 0.499999999996728
+3 0.749999999995093
+4 0.999999999993457
+-1 -0.249999999998364
+-2 -0.499999999996728
+-3 -0.749999999995093
+-4 -0.999999999993457
+};
+\addplot [semithick, red, mark=square*, mark size=3, mark options={solid}, only marks]
+table {%
+1 0.16
+2 0.5
+3 0.72
+4 1.04
+-1 -0.16
+-2 -0.48
+-3 -0.72
+-4 -1.06
+};
+\end{axis}
+
+\end{tikzpicture}

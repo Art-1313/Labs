@@ -1,0 +1,561 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{misccorr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{circuitikz}
+\usepackage[font={small}]{caption}
+\usepackage[left=20mm, top=20mm, right=20mm, bottom=20mm, nohead]{geometry}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pstool}
+\usepackage{pgfplots}
+\usepackage{hhline}
+\usepackage{multirow}
+
+\DeclareCaptionLabelSeparator{fill}{\\}
+\DeclareCaptionLabelFormat{fullparents}{\bothIfFirst{#1}{~}#2}
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			{\LARGE Отчёт по лабораторной работе 2.2.6.\\}
+			\vspace*{10cm}
+				\textbf{\LARGE Определение энергии активации по температурной зависимости вязкости жидкости.}	
+			\vspace*{6cm}
+		\end{center}
+		\hfill\begin{minipage}{0.35\textwidth}
+				Работу выполнил Грмов Артём\\
+				ЛФИ Б02-006
+		\end{minipage}
+		\vspace{5cm}
+		\begin{center}
+ 			Долгопрудный, 2021 г.
+		\end{center}   
+	\end{titlepage}
+	
+	\section{Аннотация}
+		\noindent\textbf{Цель работы: }
+		\begin{enumerate}
+			\item измерение скорости падения шариков при разной температуре жидкости; 
+			\item вычисление вязкости жидкости по закону Стокса и расчёт энергии активации.
+		\end{enumerate}
+		\noindent\textbf{В работе используются: } стеклянный цилиндр с исследуемой жидкостью (глицерин); термостат; секундомер;
+		микроскоп; мелкие шарики (диаметром около 1 мм).
+		\vspace{0.5 cm}
+		\par По своим свойствам жидкости сходны как с газами, так и с твердыми телами. Подобно газам, жидкости принимают форму
+		сосуда, в котором они находятся. Подобно твердым телам, они обладают сравнительно большой плотностью, с трудом поддаются
+		сжатию. 
+		\par Двойственный характер свойств жидкостей связан с особенностями движения их молекул. В жидкостях, как и в кристаллах,
+		каждая молекула находится в потенциальной яме электрического поля, создаваемого окружающими молекулами. Глубина
+		потенциальной ямы в жидкостях больше средней кинетической энергии колеблющейся молекулы, поэтому молекулы колеблются
+		вокруг более или менее стабильных положений равновесия. Однако у жидкостей различие между этими двумя энергиями
+		невелико, так что молекулы нередко выскакивают из «своей» потенциальной ямы и занимают место в другой.
+		\par В отличие от твердых тел, жидкости обладают «рыхлой» структурой. В них имеются свободные места --- «дырки», благодаря
+		чему молекулы могут перемещаться, покидая свое место и занимая одну из соседних дырок. Таким образом, молекулы медленно
+		перемещаются внутри жидкости, пребывая часть времени около определенных мест равновесия и образуя картину меняющейся
+		со временем пространственной решетки. На современном языке принято говорить, что \textit{в жидкости присутствует ближний,
+		но не дальний порядок}, расположение молекул упорядочено в небольших объемах, но порядок перестает замечаться при
+		увеличении расстояния.
+		\par Как уже отмечалось, для того чтобы перейти в новое состояние, молекула должна преодолеть участки с большой
+		потенциальной энергией, превышающей среднюю тепловую энергию молекул. Для этого тепловая энергия молекул должна ---
+		вследствие флуктуации --- увеличиться на некоторую величину $W$, называемую \textit{энергией активации}.
+		\par Отмеченный характер движения молекул объясняет как медленность диффузии в жидкостях, так и большую (по сравнению с
+		газами) их вязкость. В газах вязкость объясняется происходящим при тепловом движении молекул переносом количества
+		направленного движения. В жидкостях такие переходы существенно замедлены. Количество молекул, имеющих энергии больше
+		$W$, в соответствии с формулой Больцмана экспоненциально зависит от $W$. Температурная зависимость вязкости жидкости
+		выражается формулой:
+		\begin{equation}
+			\eta \sim Ae^{W/kT}.
+		\end{equation}
+		\noindent Из формулы (1) следует, что вязкость жидкости при повышении температуры должна резко уменьшаться. Если отложить
+		на графике логарифм вязкости ln$\eta$ в зависимости от $1/T$, то согласно (1) должна получиться прямая линия, по угловому
+		коэффициенту которой можно определить энергию активации молекулы $W$ исследуемой жидкости. Экспериментальные
+		исследования показывают, что в небольших температурных интервалах эта формула неплохо описывает изменение вязкости с
+		температурой.
+		\par Для исследования температурной зависимости вязкости жидкости в данной работе используется метод Стокса, основанный
+		на измерении скорости свободного падения шарика в жидкости.
+		\par На всякое тело, двигающееся в вязкой жидкости, действует сила сопротивления. Стоксом было получено строгое решение
+		задачи о ламинарном обтекании шарика безграничной жидкостью. В этом случае сила сопротивления $F$ определяется 
+		формулой:
+		\begin{equation}
+			F=6\pi\eta rv,
+		\end{equation}
+		\noindent где $\eta$ --- вязкость жидкости, $v$ --- скорость шарика, $r$ --- его радиус.
+		\par Рассмотрим свободное падение шарика в вязкой жидкости. На шарик действуют три силы: сила тяжести, архимедова сила и
+		сила вязкости, зависящая от скорости.
+		\par Найдем уравнение движения шарика в жидкости. По второму закону Ньютона:
+		\begin{equation}
+			Vg\left(\rho-\rho_{\text{ж}}\right)-6\pi\eta rv=V\rho\frac{dv}{dt},
+		\end{equation}
+		\noindent где $V$ --- объ	ём шарика, $\rho$ --- его плотность, $\rho_{\text{ж}}$ --- плотность жикости, $g$ --- ускорение свободного
+		падения. Решая это уравнение, найдём
+		\begin{equation}
+			v\left(t\right)=v_{\text{уст}}-[v_{\text{уст}}-v\left(0\right)]e^{-t/\tau}.
+		\end{equation}
+		\noindent В формуле (4) приняты обозначения: $v\left(0\right)$ --- скорость шарика в момент начала его движения в жидкости,
+		\begin{equation}
+			v_{\text{уст}}=\frac{Vg\left(\rho-\rho_{\text{ж}}\right)}{6\pi\eta r}=\frac{2}{9}gr^2\frac{\left(\rho-\rho_{\text{ж}}\right)}{\eta},   			\text{             }\tau=\frac{V\rho}{6\pi\eta r}=\frac{2}{9}\frac{r^2\rho}{\eta}
+		\end{equation}
+		\par Как видно из (4), скорость шарика экспоненциально приближается к установившейся скорости $v_{\text{уст}}$.
+		Установление скорости определяется величиной $\tau$, имеющей размерность времени и называющейся
+		\textit{временем релаксации}. Если время падения в несколько раз больше времени релаксации, процесс установления скорости
+		можно считать закончившимся.
+		\par Измеряя на опыте установившуюся скорость падения шариков $v_{\text{уст}}$ и величины $r$, $\rho$, $\rho_{\text{ж}}$,
+		можно определить вязкость жидкости по формуле, следующей из (5):
+		\begin{equation}
+			\eta=\frac{2}{9}gr^2\frac{\left(\rho-\rho_{\text{ж}}\right)}{v_{\text{уст}}}.
+		\end{equation}
+		
+		\section{Экспериментальная установка}
+		\par Для измерений используется стеклянный цилиндрический сосуд В, наполненный исследуемой жидкостью (глицерин).
+		Диаметр сосуда $\approx$3 см, длина $\approx$40 см (точные размеры указаны на установке). На стенках сосуда нанесены две
+		метки на некотором расстоянии друг от друга. Верхняя метка должна располагаться ниже уровня жидкости с таким расчетом,
+		чтобы скорость шарика к моменту прохождения этой метки успевала установиться. Измеряя расстояние между метками с
+		помощью линейки, а время падения с помощью секундомера, определяют скорость шарика $v_{\text{уст}}$. Сам сосуд B помещен
+		в рубашку D, омываемую водой из термостата. При работающем термостате температура воды в рубашке D, а потому и
+		температура жидкости 12 равна температуре воды в термостате.
+		\par Радиусы шариков измеряются микрскопом. Для каждого шарика рекомендуется измерить несколько различных диаметров и
+		вычислить среднее значение. Такое усреднение целесообразно, поскольку в работе используются шарики, форма которых может
+		несколько отличаться от сферической.
+		\par Схема прибора (в разрезе) и внешний вид термостата показаны на рис. 1 и рис. 2.
+		\par Термостат и прибор для определения коэффициента вязкости жидкости показаны на рис. 1 (фотография термостата
+		представлена на рис. 2, обозначения на рис. 1 и рис. 2 совпадают).
+		\begin{figure}[H]
+			\begin{minipage}[h]{0.49\linewidth}
+				\includegraphics[width=0.99\textwidth]{C:/Users/gromo/Desktop/Установка.png}
+				\caption{Установка для определения коэффициента вязкости жидкости}
+			\end{minipage}
+			\hfill
+			\begin{minipage}[h]{0.49\linewidth}
+				\includegraphics[width=0.99\textwidth]{C:/Users/gromo/Desktop/Термостат.png}
+				\caption{Термостат}
+			\end{minipage}
+		\end{figure}
+		\noindent\small{1 --- блок терморегулирования; 2 --- ванна; 3 --- индикаторное табло; 4 --- ручка установки температуры;
+				5 --- кнопка переключения режимов установки/контроля температуры; 6 --- индикатор уровня жидкости;
+				7 --- индикатор включения нагревателя; 8 --- сетевой выключатель прибора; 9 --- крышка; 
+				10 --- входной и выходной патрубки насоса; 11 --- входной и выходной патрубки теплообменника.}
+		
+		\section{Результа измерений и обработка данных}
+		\subsection{Измерение диаметров шаров}
+		\par\normalsize{Определим с помощью микроскопа ($\sigma_{\text{мик}}=0.02$ мм) диаметры 20 шариков, участвующих в эксперименте.
+		Будем проводить по три измерения для кажого шарика, затем вычислим средний диаметр. Занесём результаты измерений в
+		таблицу 1.} 
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения диаметра шариков}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+				      \hline
+					\multicolumn{1}{|p{2cm}|}{\multirow{2}{2cm}{\centering № шара}} & 
+					\multicolumn{3}{>{\centering}p{6cm}|}{Серия измерений $d$, мм} & 
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$d_{\text{ср}}$, мм}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{случ}}$, мм}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{полн}}$, мм}} \\
+					\hhline{~---~~~} & 1 & 2 & 3 & & & \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{1} & \multicolumn{1}{p{2cm}|}{2.14} & \multicolumn{1}{p{2cm}|}{2.06} 
+					& \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{0.02} 
+					& \multicolumn{1}{p{2cm}|}{0.03} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{2} & \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.10} 
+					& \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{0.00} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{3} & \multicolumn{1}{p{2cm}|}{0.78} & \multicolumn{1}{p{2cm}|}{0.78} 
+					& \multicolumn{1}{p{2cm}|}{0.78} & \multicolumn{1}{p{2cm}|}{0.78} & \multicolumn{1}{p{2cm}|}{0.00} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\		
+					\hline
+					\multicolumn{1}{|p{2cm}|}{4} & \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.10} 
+					& \multicolumn{1}{p{2cm}|}{2.04} & \multicolumn{1}{p{2cm}|}{2.07} & \multicolumn{1}{p{2cm}|}{0.02} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{5} & \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.80} 
+					& \multicolumn{1}{p{2cm}|}{0.78} & \multicolumn{1}{p{2cm}|}{0.79} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{6} & \multicolumn{1}{p{2cm}|}{0.64} & \multicolumn{1}{p{2cm}|}{0.68} 
+					& \multicolumn{1}{p{2cm}|}{0.66} & \multicolumn{1}{p{2cm}|}{0.66} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{7} & \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.80} 
+					& \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.00} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{8} & \multicolumn{1}{p{2cm}|}{2.02} & \multicolumn{1}{p{2cm}|}{2.04} 
+					& \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.05} & \multicolumn{1}{p{2cm}|}{0.02} 
+					& \multicolumn{1}{p{2cm}|}{0.03} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{9} & \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.10} 
+					& \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{0.00} 
+					& \multicolumn{1}{p{2cm}|}{0.03} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{10} & \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.10} 
+					& \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.09} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{11} & \multicolumn{1}{p{2cm}|}{0.90} & \multicolumn{1}{p{2cm}|}{0.88} 
+					& \multicolumn{1}{p{2cm}|}{0.88} & \multicolumn{1}{p{2cm}|}{0.89} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{12} & \multicolumn{1}{p{2cm}|}{0.58} & \multicolumn{1}{p{2cm}|}{0.58} 
+					& \multicolumn{1}{p{2cm}|}{0.56} & \multicolumn{1}{p{2cm}|}{0.57} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{13} & \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.08} 
+					& \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{0.00} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline				
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\begin{table}[H]
+			\begin{center}
+				\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+	  				\hline
+					\multicolumn{1}{|p{2cm}|}{14} & \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.08} 
+					& \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.09} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+	  				\hline
+	  				\multicolumn{1}{|p{2cm}|}{15} & \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.80} 
+					& \multicolumn{1}{p{2cm}|}{0.84} & \multicolumn{1}{p{2cm}|}{0.81} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline	
+	  				\multicolumn{1}{|p{2cm}|}{16} & \multicolumn{1}{p{2cm}|}{0.76} & \multicolumn{1}{p{2cm}|}{0.78} 
+					& \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.78} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{17} & \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.10} 
+					& \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.09} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{18} & \multicolumn{1}{p{2cm}|}{2.10} & \multicolumn{1}{p{2cm}|}{2.08} 
+					& \multicolumn{1}{p{2cm}|}{2.08} & \multicolumn{1}{p{2cm}|}{2.09} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{19} & \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.78} 
+					& \multicolumn{1}{p{2cm}|}{0.80} & \multicolumn{1}{p{2cm}|}{0.79} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{20} & \multicolumn{1}{p{2cm}|}{0.76} & \multicolumn{1}{p{2cm}|}{0.74} 
+					& \multicolumn{1}{p{2cm}|}{0.76} & \multicolumn{1}{p{2cm}|}{0.75} & \multicolumn{1}{p{2cm}|}{0.01} 
+					& \multicolumn{1}{p{2cm}|}{0.02} \\
+					\hline
+	  			\end{tabular}
+			\end{center}
+		\end{table}
+		\par Случайные и полные погрешности вычислим по формулам:
+		\begin{equation}
+			\sigma_{\text{случ}}=\sqrt{\frac{1}{n(n-1)}\sum{\left(d_{i}-d_{\text{ср}}\right)^{2}}},
+		\end{equation}
+		\begin{equation}
+			\sigma_{\text{полн}}=\sqrt{\sigma^{2}_{\text{cлуч}}+\sigma^{2}_{\text{мик}}}.
+		\end{equation}
+		\noindent полученные данные также занесём в таблицу 1.
+		\subsection{Измерение установившейся скорости}
+		\par Следущим шагом работы станет определение скоростей установившегося движения шаров при разных температурах
+		глицерина. Для этого будем брасать их в сосуд и измерять время прохождения от одной метки до другой. Расстояние между
+		метка составляет $l=20\pm0.05$ см. 
+		\par Так же нам необходимо знать плотность шариков и плотность гицерина в зависимости от температуры. Согласно
+		справочникам $\rho_{\text{стек}}=2.5\text{ кг/м}^{3}$ и $\rho_{\text{стал}}=7.8\text{ кг/м}^{3}$. Шарики с диаметром
+		больше 2 мм сделаны из стекла, остальные из стали Данные о глицерине возьмём из учебника.
+		\par Полученные данные занесём в таблицу 2.
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения диаметра шариков}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+				      \hline
+					\multicolumn{1}{|p{2cm}|}{№ шара}& \multicolumn{1}{p{2cm}|}{Материал} & \multicolumn{1}{p{2cm}|}{$T$, ℃} 
+					& \multicolumn{1}{p{2cm}|}{$t$, с} & \multicolumn{1}{p{2cm}|}{$\rho_{\text{ж}}$, $\text{кг/м}^{3}$} 
+					& \multicolumn{1}{p{2cm}|}{$\eta$, $\text{г/(с}\cdot\text{см)}$} 
+					& \multicolumn{1}{p{2cm}|}{$\mathcal{E}_{\eta}$} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{1} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{20} 
+					& \multicolumn{1}{p{2cm}|}{73.2} & \multicolumn{1}{p{2cm}|}{1.260} & \multicolumn{1}{p{2cm}|}{10.91} 
+					& \multicolumn{1}{p{2cm}|}{0.03} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{2} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{20} 
+					& \multicolumn{1}{p{2cm}|}{74.0} & \multicolumn{1}{p{2cm}|}{1.260} & \multicolumn{1}{p{2cm}|}{11.03} 
+					& \multicolumn{1}{p{2cm}|}{0.03} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{3} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{20} 
+					& \multicolumn{1}{p{2cm}|}{95.1} & \multicolumn{1}{p{2cm}|}{1.260} & \multicolumn{1}{p{2cm}|}{10.31} 
+					& \multicolumn{1}{p{2cm}|}{0.08} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{4} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{30} 
+					& \multicolumn{1}{p{2cm}|}{37.2} & \multicolumn{1}{p{2cm}|}{1.254} & \multicolumn{1}{p{2cm}|}{5.43} 
+					& \multicolumn{1}{p{2cm}|}{0.03} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{5} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{20} 
+					& \multicolumn{1}{p{2cm}|}{91.7} & \multicolumn{1}{p{2cm}|}{1.260} & \multicolumn{1}{p{2cm}|}{10.29} 
+					& \multicolumn{1}{p{2cm}|}{0.08} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{6} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{30} 
+					& \multicolumn{1}{p{2cm}|}{64.3} & \multicolumn{1}{p{2cm}|}{1.254} & \multicolumn{1}{p{2cm}|}{5.00} 
+					& \multicolumn{1}{p{2cm}|}{0.09} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{7} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{30} 
+					& \multicolumn{1}{p{2cm}|}{42.4} & \multicolumn{1}{p{2cm}|}{1.254} & \multicolumn{1}{p{2cm}|}{4.84} 
+					& \multicolumn{1}{p{2cm}|}{0.08} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{8} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{30} 
+					& \multicolumn{1}{p{2cm}|}{37.5} & \multicolumn{1}{p{2cm}|}{1.254} & \multicolumn{1}{p{2cm}|}{5.37} 
+					& \multicolumn{1}{p{2cm}|}{0.03} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{9} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{40} 
+					& \multicolumn{1}{p{2cm}|}{17.8} & \multicolumn{1}{p{2cm}|}{1.251} & \multicolumn{1}{p{2cm}|}{2.67} 
+					& \multicolumn{1}{p{2cm}|}{0.04} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{10} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{40} 
+					& \multicolumn{1}{p{2cm}|}{16.4} & \multicolumn{1}{p{2cm}|}{1.251} & \multicolumn{1}{p{2cm}|}{2.43} 
+					& \multicolumn{1}{p{2cm}|}{0.04} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{11} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{40} 
+					& \multicolumn{1}{p{2cm}|}{17.6} & \multicolumn{1}{p{2cm}|}{1.251} & \multicolumn{1}{p{2cm}|}{2.47} 
+					& \multicolumn{1}{p{2cm}|}{0.07} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{12} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{40} 
+					& \multicolumn{1}{p{2cm}|}{40.9} & \multicolumn{1}{p{2cm}|}{1.251} & \multicolumn{1}{p{2cm}|}{2.40} 
+					& \multicolumn{1}{p{2cm}|}{0.11} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{13} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{50} 
+					& \multicolumn{1}{p{2cm}|}{9.3} & \multicolumn{1}{p{2cm}|}{1.247} & \multicolumn{1}{p{2cm}|}{1.37} 
+					& \multicolumn{1}{p{2cm}|}{0.06} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{14} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{50} 
+					& \multicolumn{1}{p{2cm}|}{9.3} & \multicolumn{1}{p{2cm}|}{1.247} & \multicolumn{1}{p{2cm}|}{1.38} 
+					& \multicolumn{1}{p{2cm}|}{0.06} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{15} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{50} 
+					& \multicolumn{1}{p{2cm}|}{11.3} & \multicolumn{1}{p{2cm}|}{1.247} & \multicolumn{1}{p{2cm}|}{1.33} 
+					& \multicolumn{1}{p{2cm}|}{0.09} \\
+					\hline	
+	  				\multicolumn{1}{|p{2cm}|}{16} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{50} 
+					& \multicolumn{1}{p{2cm}|}{11.4} & \multicolumn{1}{p{2cm}|}{1.247} & \multicolumn{1}{p{2cm}|}{1.24} 
+					& \multicolumn{1}{p{2cm}|}{0.09} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{17} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{60} 
+					& \multicolumn{1}{p{2cm}|}{5.1} & \multicolumn{1}{p{2cm}|}{1.245} & \multicolumn{1}{p{2cm}|}{0.76} 
+					& \multicolumn{1}{p{2cm}|}{0.10} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\begin{table}[H]
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+				      \hline
+				      \multicolumn{1}{|p{2cm}|}{18} & \multicolumn{1}{p{2cm}|}{стекло} & \multicolumn{1}{p{2cm}|}{60} 
+					& \multicolumn{1}{p{2cm}|}{5.3} & \multicolumn{1}{p{2cm}|}{1.245} & \multicolumn{1}{p{2cm}|}{0.79} 
+					& \multicolumn{1}{p{2cm}|}{0.10} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{19} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{60} 
+					& \multicolumn{1}{p{2cm}|}{6.7} & \multicolumn{1}{p{2cm}|}{1.245} & \multicolumn{1}{p{2cm}|}{0.75} 
+					& \multicolumn{1}{p{2cm}|}{0.11} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{20} & \multicolumn{1}{p{2cm}|}{сталь} & \multicolumn{1}{p{2cm}|}{60} 
+					& \multicolumn{1}{p{2cm}|}{7.6} & \multicolumn{1}{p{2cm}|}{1.245} & \multicolumn{1}{p{2cm}|}{0.77} 
+					& \multicolumn{1}{p{2cm}|}{0.10} \\
+					\hline				
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\par Погрешность измерения времени секундомером (с учётом реакции человека) $\sigma_{\text{сек}=0.5} с$. Погрешность
+		измерения температуры пренебрежимо мала (меньше 0.3\%). Исподьзуя формулу (6) и формулу для нахождения погрешности
+		степенной функции имеем:
+		\begin{equation}
+			\mathcal{E}_{\eta}=\sqrt{\left(\frac{\sigma_{t}}{t}\right)^{2}+4\left(\frac{\sigma_{d}}{d}\right)^{2}
+			+\left(\frac{\sigma_{l}}{l}\right)^{2}}
+		\end{equation}
+		\subsection{Измерения числа Рейнольдса}
+		\par Приведённая выше теория для расчёта вязкости справедлива, если обтекание шарика жидкостью имеет ламинарнй
+		характер. Ламинарность определяется числом Рейнольдса Re$=vr\rho_{\text{ж}}$. Обтекание является ламинарным лишь при
+		малых значених Re (меньше 0.5). Вычислим число Рейнольдса, а также найдём время релаксации $\tau$ из (5) и путь
+		$S=v_{\text{уст}}\tau$. Погрешности снова вычислим по формулам для степенной функции. Результаты занесём в таблицу 3.
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения диаметра шариков}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+				      \hline
+					\multicolumn{1}{|p{2cm}|}{№ шара}& \multicolumn{1}{p{2cm}|}{Re} 
+					& \multicolumn{1}{p{2cm}|}{$\mathcal{E}_{Re}$} 
+					& \multicolumn{1}{p{2cm}|}{$\tau$, мс} & \multicolumn{1}{p{2cm}|}{$\mathcal{E}_{\tau}$} 
+					& \multicolumn{1}{p{2cm}|}{$S$, мм} 
+					& \multicolumn{1}{p{2cm}|}{$\mathcal{E}_{S}$} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{1} & \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.03} 
+					& \multicolumn{1}{p{2cm}|}{0.56} & \multicolumn{1}{p{2cm}|}{0.04} 
+					& \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.04} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{2} & \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.03} 
+					& \multicolumn{1}{p{2cm}|}{0.56} & \multicolumn{1}{p{2cm}|}{0.04}  
+					& \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.04} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{3} & \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.08} 
+					& \multicolumn{1}{p{2cm}|}{0.26} & \multicolumn{1}{p{2cm}|}{0.09}  
+					& \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.09}\\		
+					\hline
+					\multicolumn{1}{|p{2cm}|}{4} & \multicolumn{1}{p{2cm}|}{0.01} & \multicolumn{1}{p{2cm}|}{0.04} 
+					& \multicolumn{1}{p{2cm}|}{0.01} & \multicolumn{1}{p{2cm}|}{0.04} 
+					& \multicolumn{1}{p{2cm}|}{0.01} & \multicolumn{1}{p{2cm}|}{0.04} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{5} & \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.08} 
+					& \multicolumn{1}{p{2cm}|}{0.27} & \multicolumn{1}{p{2cm}|}{0.09} 
+					& \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.09} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{6} & \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.10} 
+					& \multicolumn{1}{p{2cm}|}{0.38} & \multicolumn{1}{p{2cm}|}{0.12} 
+					& \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.12} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{7} & \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.08} 
+					& \multicolumn{1}{p{2cm}|}{0.57} & \multicolumn{1}{p{2cm}|}{0.09} 
+					& \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.09} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{8} & \multicolumn{1}{p{2cm}|}{0.01} & \multicolumn{1}{p{2cm}|}{0.04} 
+					& \multicolumn{1}{p{2cm}|}{1.09} & \multicolumn{1}{p{2cm}|}{0.04} 
+					& \multicolumn{1}{p{2cm}|}{0.01} & \multicolumn{1}{p{2cm}|}{0.05} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{9} & \multicolumn{1}{p{2cm}|}{0.06} & \multicolumn{1}{p{2cm}|}{0.05} 
+					& \multicolumn{1}{p{2cm}|}{2.29} & \multicolumn{1}{p{2cm}|}{0.04} 
+					& \multicolumn{1}{p{2cm}|}{0.03} & \multicolumn{1}{p{2cm}|}{0.05} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{10} & \multicolumn{1}{p{2cm}|}{0.07} & \multicolumn{1}{p{2cm}|}{0.05} 
+					& \multicolumn{1}{p{2cm}|}{2.49} & \multicolumn{1}{p{2cm}|}{0.05} 
+					& \multicolumn{1}{p{2cm}|}{0.03} & \multicolumn{1}{p{2cm}|}{0.06} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{11} & \multicolumn{1}{p{2cm}|}{0.03} & \multicolumn{1}{p{2cm}|}{0.08} 
+					& \multicolumn{1}{p{2cm}|}{1.38} & \multicolumn{1}{p{2cm}|}{0.09} 
+					& \multicolumn{1}{p{2cm}|}{0.02} & \multicolumn{1}{p{2cm}|}{0.09} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{12} & \multicolumn{1}{p{2cm}|}{0.01} & \multicolumn{1}{p{2cm}|}{0.11} 
+					& \multicolumn{1}{p{2cm}|}{0.59} & \multicolumn{1}{p{2cm}|}{0.13}  
+					& \multicolumn{1}{p{2cm}|}{0.00} & \multicolumn{1}{p{2cm}|}{0.13} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{13} & \multicolumn{1}{p{2cm}|}{0.20} & \multicolumn{1}{p{2cm}|}{0.08} 
+					& \multicolumn{1}{p{2cm}|}{4.37} & \multicolumn{1}{p{2cm}|}{0.06}  
+					& \multicolumn{1}{p{2cm}|}{0.09} &\multicolumn{1}{p{2cm}|}{0.08} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{14} & \multicolumn{1}{p{2cm}|}{0.20} & \multicolumn{1}{p{2cm}|}{0.08} 
+					& \multicolumn{1}{p{2cm}|}{4.37} & \multicolumn{1}{p{2cm}|}{0.06}  
+					& \multicolumn{1}{p{2cm}|}{0.09} & \multicolumn{1}{p{2cm}|}{0.08} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{15} & \multicolumn{1}{p{2cm}|}{0.07} & \multicolumn{1}{p{2cm}|}{0.10} 
+					& \multicolumn{1}{p{2cm}|}{2.15} & \multicolumn{1}{p{2cm}|}{0.11} 
+					& \multicolumn{1}{p{2cm}|}{0.04} & \multicolumn{1}{p{2cm}|}{0.11} \\
+					\hline	
+	  				\multicolumn{1}{|p{2cm}|}{16} & \multicolumn{1}{p{2cm}|}{0.07} & \multicolumn{1}{p{2cm}|}{0.10} 
+					& \multicolumn{1}{p{2cm}|}{2.13} & \multicolumn{1}{p{2cm}|}{0.11} 
+					& \multicolumn{1}{p{2cm}|}{0.04} & \multicolumn{1}{p{2cm}|}{0.12} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{17} & \multicolumn{1}{p{2cm}|}{0.67} & \multicolumn{1}{p{2cm}|}{0.14} 
+					& \multicolumn{1}{p{2cm}|}{7.96} & \multicolumn{1}{p{2cm}|}{0.10} 
+					& \multicolumn{1}{p{2cm}|}{0.31} & \multicolumn{1}{p{2cm}|}{0.14} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{18} & \multicolumn{1}{p{2cm}|}{0.62} & \multicolumn{1}{p{2cm}|}{0.14} 
+					& \multicolumn{1}{p{2cm}|}{7.66} & \multicolumn{1}{p{2cm}|}{0.10} 
+					& \multicolumn{1}{p{2cm}|}{0.29} & \multicolumn{1}{p{2cm}|}{0.14} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{19} & \multicolumn{1}{p{2cm}|}{0.20} & \multicolumn{1}{p{2cm}|}{0.13} 
+					& \multicolumn{1}{p{2cm}|}{3.62} & \multicolumn{1}{p{2cm}|}{0.12}  
+					& \multicolumn{1}{p{2cm}|}{0.11} & \multicolumn{1}{p{2cm}|}{0.14} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{20} & \multicolumn{1}{p{2cm}|}{0.16} & \multicolumn{1}{p{2cm}|}{0.13} 
+					& \multicolumn{1}{p{2cm}|}{3.19} & \multicolumn{1}{p{2cm}|}{0.12}  
+					& \multicolumn{1}{p{2cm}|}{0.08} & \multicolumn{1}{p{2cm}|}{0.14} \\
+					\hline				
+				\end{tabular}
+			\end{center}
+		\end{table} 
+		\par По таблице видно, что в двух опытах не соблюдены условия ламинарности обтекания. Будем учитывать этот факт при
+		дальнейшем аналтзе данных.
+		\subsection{Вычисление энергии активации}
+		\par Для вычисления $W$ построим график  ln$\eta$ от $1/T$. Затем с
+		по МНК вычислим угловой коэффициент. С помощью него найдём энергию активации по
+		формуле:
+		\begin{equation}
+			W=ak_{\text{Б}},
+		\end{equation}
+		\noindent где $a$ --- угловой коэффицент, а $k_{\text{Б}}$ --- постоянная Больцмана.
+		\par Для построения графика (Рис. 3) построим таблицу 4, в которой запишем значения ln$\eta$ от $1/T$.
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения диаметра шариков}
+			\begin{center}
+				\begin{tabular}{|p{2.2cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|
+								p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|}
+					\hline
+					ln$\eta$ & 2.39 & 2.40 & 2.33 & 1.69 & 2.33 & 1.61 & 1.58 & 1.68 & 0.98 & 0.89 \\
+					\hline
+					$\sigma_{\text{ln}\eta}$ & 0.03 & 0.03 & 0.08 & 0.03 & 0.08 & 0.09 & 0.08 & 0.03 & 0.04 & 0.04 \\
+					\hline
+					$100/T$, 1/K & 0.34 & 0.34 & 0.34 & 0.33 & 0.34 & 0.33 & 0.33 & 0.33 & 0.32 & 0.32 \\
+					\hline
+					ln$\eta$  & 0.90 & 0.88 & 0.32 & 0.32 & 0.29 & 0.21 & -0.27 & -0.24 & -0.28 & -0.26 \\
+					\hline
+					$\sigma_{\text{ln}\eta}$ & 0.07 & 0.11 & 0.06 & 0.06 & 0.09 & 0.09 & 0.10 & 0.10 & 0.11 & 0.10 \\
+					\hline
+					$1/T$, 1/K & 0.32 & 0.32 & 0.31 & 0.31 & 0.31 & 0.31 & 0.30 & 0.30 & 0.30 & 0.30 \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\begin{figure}[H]
+			\begin{center}
+				\input{C:/Users/gromo/PycharmProjects/plottest/plot2.tex}
+			\end{center}
+			\captionsetup{font={small}, justification=justified}
+			\caption[figure]{График зависимости ln$\eta$ от $1/T$}
+		\end{figure}
+		\par Погрешность логарифма вычисляется с помощью основного уравнения для погрешностей, в итоге придём к следущему 
+		выражению:
+		\begin{equation}
+			\sigma_{\text{ln}\eta}=\frac{\sigma_{\eta}}{\eta}=\mathcal{E}_{\eta}
+		\end{equation}
+		\par С помощью метода наименьших квадратов вычислим характеристики прямой ln$\eta=b+a\frac{1}{T}$:
+		\begin{equation}
+			a=\frac{\langle\text{ln}\eta/T\rangle-\langle\text{ln}\eta\rangle\langle1/T\rangle}
+					{\langle1/T^{2}\rangle-\langle1/T\rangle^{2}},
+			\text{       }b=\langle\text{ln}\eta\rangle-a\langle1/T\rangle
+		\end{equation}
+		\par Погрешность определения коэфициента $a$ вчислим по следующей формуле:
+		\begin{equation}
+			\sigma_a=\frac{1}{\sqrt{N}}
+			\sqrt{\frac{\langle\text{ln}^{2}\eta\rangle-\langle\text{ln}\eta\rangle^{2}}
+						{\langle1/T^{2}\rangle-\langle1/T\rangle^{2}}-a^2},
+		\end{equation}
+		\noindent где $N$ --- число шариков.
+		\par Теперь нетрудно вычислить энергию активации $W=557\pm6$ мЭв.
+		
+		\section{Обсуждение результатов}
+		\par Точность измерения энергии активации оказалась довольно высокой (порядка 1\%). Наибольший вклад в погрешность
+		измерений внесло измерение времени, погрешность иногда достигала значения в 10\%. Судя по графику (Рис. 3) все
+		измерения легли на теоретическую прямую в пределах погрешности, что говорит о правильности наших допущений. Не
+		обнаружено отклонений от прямолинейной зависимости, следовательно интервал рабочих температур был выбран верно.
+		Небольшие отклонения от ламинарного течения также не сказались на результате.
+		
+		\section{Вывод} 
+		\par Данная работа показывет, что метод Стокса является довольно точным методом определения вязкости жидкости и
+		её энергии активации. Однако он может приводить к неправильным результатам при неламинарном обтекании тела.
+		Дальнейшим развитием данной работы могло бы стать исследование применимости метода Стокса при больших интервалах
+		рабочих температур. Так же может быть исследована зависимоть парметра $A$ в формуле (1) от тумпературы. Все 
+		поставленные в работе цели были достигнуты. Для повышения точности следует точнее измерять время.
+		
+\end{document}

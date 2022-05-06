@@ -1,0 +1,44 @@
+% This file was created with tikzplotlib v0.9.13.
+\begin{tikzpicture}
+
+\begin{axis}[
+    height=9.5cm,
+    tick align=inside,
+    major tick length=0.2cm,
+    minor tick length=0.1cm,
+    tick pos=left,
+    x grid style={white!69.0196078431373!black},
+    xmin=0, xmax=1.1,
+    xtick={0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2},
+    minor x tick num=4,
+    xmajorgrids,
+    minor x grid style={dotted,black},
+    xminorgrids,
+    xtick style={color=black},
+    xlabel={$I$, \text{А}},
+    ymin = -0.08, ymax = 1,
+    ytick = {-0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0},
+    ytick style={color=black},
+    minor y tick num=4,
+    ymajorgrids,
+    minor y grid style={dotted,black},
+    yminorgrids,
+    ytick style={color=black},
+    ylabel={$g$, \text{мкВ/Тл}}
+]
+\addplot [semithick, black]
+table {%
+0 -0.125800562728571
+1.1 0.998210595443947
+};
+\addplot [semithick, red, mark=square*, mark size=3, mark options={solid}, only marks]
+table {%
+0.2 0.0747091464480018
+0.4 0.289196695927749
+0.6 0.494044355543238
+0.8 0.674792290498081
+1 0.903739674774216
+};
+\end{axis}
+
+\end{tikzpicture}

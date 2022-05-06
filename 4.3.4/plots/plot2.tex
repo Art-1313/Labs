@@ -1,0 +1,83 @@
+% This file was created with tikzplotlib v0.9.16.
+\begin{tikzpicture}
+
+\begin{axis}[
+    height=8.5cm,
+    tick align=inside,
+    major tick length=0.2cm,
+    minor tick length=0.1cm,
+    tick pos=left,
+    xmin=0, xmax=60,
+    xtick={0, 10, 20, 30, 40, 50, 60},
+    minor x tick num=4,
+    xmajorgrids,
+    minor x grid style={dotted,black},
+    xminorgrids,
+    xtick style={color=black},
+    xlabel={$1/d_{\text{c}}$, ммк$^{-1}\cdot10^3$},
+    ymin=0, ymax=4,
+    ytick={0, 1, 2, 3, 4},
+    ytick style={color=black},
+    minor y tick num=4,
+    ymajorgrids,
+    minor y grid style={dotted,black},
+    yminorgrids,
+    ytick style={color=black},
+    ylabel={$\Delta y$, мм}
+]
+\path [draw=red, semithick]
+(axis cs:41.5509830080406,3.40789473684211)
+--(axis cs:58.8839277983872,3.40789473684211);
+
+\path [draw=red, semithick]
+(axis cs:28.6510614834337,2.28070175438597)
+--(axis cs:45.1547766412899,2.28070175438597);
+
+\path [draw=red, semithick]
+(axis cs:8.21175751760168,1.14433811802233)
+--(axis cs:25.0976188645301,1.14433811802233);
+
+\path [draw=red, semithick]
+(axis cs:-1.11823489424619,0.546491228070175)
+--(axis cs:17.42739013529,0.546491228070175);
+
+\path [draw=red, semithick]
+(axis cs:-6.76519611842545,0.397894736842105)
+--(axis cs:19.4808086792392,0.397894736842105);
+
+\path [draw=red, semithick]
+(axis cs:50.2174554032139,3.16216501055873)
+--(axis cs:50.2174554032139,3.65362446312548);
+
+\path [draw=red, semithick]
+(axis cs:36.9029190623618,2.1163363959825)
+--(axis cs:36.9029190623618,2.44506711278943);
+
+\path [draw=red, semithick]
+(axis cs:16.6546881910659,1.0617966444459)
+--(axis cs:16.6546881910659,1.22687959159875);
+
+\path [draw=red, semithick]
+(axis cs:8.15457762052189,0.498503979149564)
+--(axis cs:8.15457762052189,0.594478476990787);
+
+\path [draw=red, semithick]
+(axis cs:6.3578062804069,0.365042287319376)
+--(axis cs:6.3578062804069,0.430747186364835);
+
+\addplot [semithick, black]
+table {%
+0 0
+50.2174554032139 3.31038273831307
+};
+\addplot [semithick, red, mark=*, mark size=3, mark options={solid}, only marks]
+table {%
+50.2174554032139 3.40789473684211
+36.9029190623618 2.28070175438597
+16.6546881910659 1.14433811802233
+8.15457762052189 0.546491228070175
+6.3578062804069 0.397894736842105
+};
+\end{axis}
+
+\end{tikzpicture}

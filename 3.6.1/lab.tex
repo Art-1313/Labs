@@ -1,0 +1,393 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{indentfirst}
+\usepackage{misccorr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{circuitikz}
+\usepackage[font={small}]{caption}
+\usepackage[left=20mm, top=20mm, right=20mm, bottom=20mm, nohead]{geometry}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pstool}
+\usepackage{pgfplots}
+\usepackage{hhline}
+\usepackage{multirow}
+
+\DeclareCaptionLabelSeparator{fill}{.\\}
+\DeclareCaptionLabelFormat{fullparents}{\bothIfFirst{#1}{~}#2}
+
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			{\LARGE Отчёт по лабораторной работе 3.6.1.\\}
+			\vspace*{11cm}
+				\textbf{\LARGE Спктральный анализ электрических сигналов.}	
+			\vspace*{6.5cm}
+		\end{center}
+		\hfill\begin{minipage}{0.37\textwidth}
+				Работу выполнил Громов Артём
+                \\
+				ЛФИ Б02-006
+		\end{minipage}
+		\vspace{5cm}
+		\begin{center}
+ 			Долгопрудный, 2021 г.
+		\end{center}   
+	\end{titlepage}
+	
+	\section{Аннотация}
+	    \noindent\textbf{Цель работы:} изучение спектров электрических сигналов.
+        \\
+		\noindent\textbf{В работе используются:} генератор сигналов произвольной формы, цифровой осциллограф с функцией быстрого
+        преобразования Фурье.
+		\vspace{0.5 cm}
+
+		\subsection{Разложение сложных сигналов на периодические колебания}
+            \par Метод для описания сигналов. Для него используется разложение в сумму синусов и косинусов с различными аргументами или, как чаще его
+            называют, \textit{разложение в ряд Фурье}.
+            \par Пусть задана функция $f(t)$, которая периодически повторяется с частотой $\Omega_1 = \dfrac{2\pi}{T}$, где $T$ --- период повторения
+            импульсов. Её разложение в ряд Фурье имеет вид 
+            \begin{equation}
+                f(t) = \dfrac{a_0}{2} + \sum\limits_{n = 1}^{\infty}\left[a_n \cos \left(n \Omega_1t\right) + b_n \sin \left(n \Omega_1t\right)\right]
+            \end{equation}
+            или
+            \begin{equation}
+                f(t) = \dfrac{a_0}{2} + \sum\limits_{n = 1}^{\infty}A_n \cos \left(n\Omega_1t-\psi_n\right)
+            \end{equation}
+            \par Если сигнал чётен относительно $t=0$, так что $f(t) = f(-t)$ в тригонометрической записи остаются только косинусные члены. Для нечётной
+            наоборот.
+            \par Коэффициенты определяются по формуле
+            \begin{equation}
+                a_n  = \dfrac{2}{T}\int\limits_{t_1}^{t_1+T}f(t)\cos\left(n \Omega_1 t\right) dt, \ \ \ \
+                b_n = \dfrac{2}{T}\int\limits_{t_1}^{t_1+T}f(t)\sin\left(n \Omega_1 t\right) dt
+            \end{equation}
+            Здесь $t_1$ --- время, с которого мы начинаем отсчет.
+            Сравнив формулы (1) и (2) можно получить выражения для $A_n$  и $\psi_n$:
+            \begin{equation}
+                A_n = \sqrt{a_n^2+b_n^2};\psi_n = \arctan \dfrac{b_n}{a_n}
+            \end{equation}
+
+        \subsection{Периодическая последовательность прямоугольных импульсов}
+            \par Введем некоторые величины $\Omega_1 = \dfrac{2\pi}{T}$, где $T$ --- период повторения импульсов.
+            Коэффициенты при косинусных составляющих будут равны
+            \begin{equation}
+                a_n = \dfrac{2}{T}\int\limits_{-\tau/2}^{\tau/2}V_0\cos\left(n\Omega_1 t\right)dt = 
+                2V_0\dfrac{\tau}{T}\dfrac{\sin\left(n\Omega_1\tau/2\right)}{n\Omega_1\tau/2} \sim \dfrac{\sin x}{x},
+            \end{equation}
+            где $V_0$ - амплитуда сигнала.
+            \par Поскольку наша функция чётная, то $b_n = 0$. Пусть у нас $\tau$ кратно $T$. Тогда введем ширину спектра, равную $\Delta \omega$ ---
+            расстояние от главного максимума до первого нуля огибающей, возникающего, как нетрудно убедится при $n = \dfrac{2\pi}{\tau \Omega_1}$. При этом
+            \begin{equation}
+                \Delta \omega \tau \simeq 2\pi \Rightarrow \Delta \nu \Delta t \simeq 1
+            \end{equation}
+
+        \subsection{Периодическая последовательность цугов}
+            \par Функция $f(t)$ снова является четной относительно $t = 0$. Коэффициент при $n$-ой гармонике согласно формуле $(3)$ равен
+            \begin{equation}
+                a_n = \dfrac{2}{T}\int\limits_{-\tau/2}^{\tau/2}V_0 \cos \left(\omega_0t\right) \cdot \cos\left(n \Omega_1t\right)dt =
+                V_0 \dfrac{\tau}{T}\left( \dfrac{\sin\left[\left(\omega_0 - n \Omega_1\right)\dfrac{\tau}{2}\right]}{\left( \omega_0 - n \Omega_1\right)
+                \dfrac{\tau}{2}} + \dfrac{\sin\left[\left(\omega_0 + n \Omega_1\right)\dfrac{\tau}{2}\right]}{\left( \omega_0 + n \Omega_1\right)
+                \dfrac{\tau}{2}}\right)
+            \end{equation}
+
+        \subsection{Амплитудно-модулированные колебания}
+            \par Рассмотрим гармонические колебания высокой частоты $\omega_0$, амплитуда которых медленно меняется по гармоническому закону с частотой
+            $\Omega \ll \omega_0$.
+            \begin{equation}
+                f(t) = A_0 \left[1+m\cos \Omega t\right] \cos \omega_0 t
+            \end{equation}
+            \par Коэффициентом $m$ называется \textit{глубина модуляции}. При $m < 1$ амплитуда меняется от минимальной $A_{min} = A_0(1-m)$ до максимальной
+            $A_{max} = A_0(1+m)$. Глубина модуляции может быть представлена в виде
+            \begin{equation}
+                m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}
+            \end{equation}
+            \par Простым тригонометрическим преобразованием уравнения (9) можно найти спектр колебаний
+            \begin{equation}
+                f(t) = A_0 \cos \omega_0t + \dfrac{A_0m}{2} \cos \left(\omega_0 + \Omega\right)t + \dfrac{A_0m}{2}\cos\left(\omega_0 - \Omega\right)t
+            \end{equation}
+
+	\section{Экспериментальная установка}
+        \par Исследуемый сигнал $f(t)$ и синусоидальный сигнал от вспомогатель­ного генератора, называемого в таких системах гетеродином, пода­ются на вход 
+        смесителя. Смеситель --- элемент, преобразующий колебания с частотами $\nu_1$ и $\nu_2$ в колебания на комбинированных частотах: $\nu_1+\nu2$ и
+        $\nu_1-\nu_2$. «Разностный» сигнал смесителя поступает на фильтр --- высокодобротный колебательный контур, настроенный на некоторую фиксированную
+        резонансную частоту $\nu_0$. Таким образом, если $f(t)$ содержит гармонику $\nu = \nu_{\text{гет}} - \nu_0$ ($\nu_{\text{гет}}$ --- частота
+        гетеродина), она будет усилена, а отклик будет пропорционален её амплитуде.
+        \begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{images/plant.png}
+				\caption{Структурная схема анализатора спектра}
+			\end{center}
+		\end{figure}
+        \par Отметим, что смешение частот исследуемого сигнала и частоты ге­теродина лежит в основе большинства современных радиоприёмных устройств ---
+        супергетеродинов.
+        \par В спектральном анализаторе частота гетеродина пропорциональна напряжению, подаваемому на развёртку по оси $X$ встроенного в анали­затор
+        осциллографа. Выходной сигнал подаётся на канал $Y$. На экране анализатора возникает, таким образом, график, изображающий зави­симость амплитуды
+        гармоник исходного сигнала от частоты, т.е. его спектр (заметим, что информация о фазах гармоник при этом теряет­ся).
+        \par В последнее время повсеместное распространение получила цифро­вая обработка сигналов. Спектральный состав оцифрованного сигнала может быть найден
+        численно. Существуют алгоритмы (быстрое преоб­ разование Фурье, FFT), позволяющие проводить вычисления коэффи­циентов Фурье в реальном времени для
+        сигналов относительно высокой частоты (до 200 МГц). Гетеродинные схемы по-прежнему применяются для анализа спектров сверхвысоких частот, приближающихся
+        к такто­вой частоте современных интегральных схем ($\gtrsim$ 1 ГГц).
+
+    \section{Результаты измерений и обработка данных}
+
+        \subsection{Исследование спектра периодических последовательностей прямоугольных импульсов}
+            \par Устанавливаем колебания прямоугольные c $\nu_{\text{повт}} = 1$ кГц (период $T = 1$ мс) и длительность импульса $\tau = T/20 = 50$ мкс.
+            Получаем на экране спектр сигнала, потом изменяя $\tau$ и $\nu_{\text{повт}}$, не изменяя другой величины наблюдаем, как изменяется спектр.
+            Результаты измерений приведены на рис.2-7.
+            \begin{figure}[H]
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images/AKIP0001.png}
+				    \caption{$\nu_{\text{повт}} = 1$ кГц, $\tau = 50$ мкс}
+                    \vspace{0.5cm}
+                    \includegraphics[width=\textwidth]{images/AKIP0003.png}
+				    \caption{$\nu_{\text{повт}} = 2$ кГц, $\tau = 50$ мкс}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images/AKIP0002.png}
+				    \caption{$\nu_{\text{повт}} = 1.5$ кГц, $\tau = 50$ мкс}
+                    \vspace{0.5cm}
+                    \includegraphics[width=\textwidth]{images/AKIP0004.png}
+				    \caption{$\nu_{\text{повт}} = 2.5$ кГц, $\tau = 50$ мкс}
+                \end{minipage}
+            \end{figure}
+            \begin{figure}[H]
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images/AKIP0005.png}
+				    \caption{$\nu_{\text{повт}} = 1$ кГц, $\tau = 60$ мкс}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images/AKIP0006.png}
+				    \caption{$\nu_{\text{повт}} = 1$ кГц, $\tau = 100$ мкс}
+                \end{minipage}
+            \end{figure}
+            \begin{figure}[H]
+                \begin{minipage}{0.40\textwidth}
+                    \par Теперь зафиксируем $\nu_{\text{повт}} = 1$ кГц и $\tau = 50$ мкс. Для этих параметров измерим величину $a_n$ и $\nu_n$. И сравним с
+                    рассчитанными значениями по формуле (5).
+                    \par Из таблицы мы видим, что $\Delta \nu$ сохраняются между гармониками, что сходится с теорией. Так же мы видим, что амплитуды довольно
+                    неплохо сходятся с теорией.
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.57\textwidth}
+                    \begin{table}[H]
+                        \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                        singlelinecheck=false, skip=-0.2cm}
+                        \caption{Исследование амплитуд и частот гармоник}
+                        \begin{center}
+                            \begin{tabular}{|p{2.5cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|}
+                            \hline
+                            $n$ гармоники & 1 & 2 & 3 & 4 & 5 \\
+                            \hline
+                            $f$, кГц & 29,4 & 49,4 & 69,6 & 89,8 & 110 \\
+                            \hline
+                            $a_n$, мВ & 15,6 & 9,2 & 7,5 & 5,2 & 4,4 \\
+                            \hline
+                            $a_{n, \text{теория}}$, мВ & 11,6 & 10,3 & 8,4 & 6,1 & 3,6 \\
+                            \hline
+                            $\dfrac{\left|a_n - a_{n, \text{теория}}\right|}{a_{n, \text{теория}}}$ & 0,25 & 0,12 & 0,12 & 0,16 & 0,18 \\
+                            \hline
+                            $\Delta \nu$, кГц & 20 & 20 & 20,2 & 20,2 & 20,2 \\
+                            \hline
+                            \end{tabular}
+                        \end{center}
+                    \end{table}
+                \end{minipage}
+            \end{figure}    
+            \begin{figure}[H]
+                \begin{minipage}{0.65\textwidth}
+                    \begin{table}[H]
+                        \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedright,
+                        singlelinecheck=false, skip=-0.2cm}
+                        \caption{Исследование зависимости $\Delta t$ от $\Delta \nu$}
+                        \begin{center}
+                            \begin{tabular}{|p{1.5cm}|p{0.85cm}|p{0.85cm}|p{0.85cm}|p{0.85cm}|p{0.85cm}|p{0.85cm}|p{0.85cm}|}
+                            \hline
+                            $\tau$, мкс & 50 & 75 & 100 & 125 & 150 & 175 & 200 \\
+                            \hline
+                            $\Delta \nu$, кГц & 19,6 & 13,4 & 9,8 & 8,0 & 6,5 & 5,5 & 4,5 \\
+                            \hline
+                            $1/\tau \cdot 10^3$, с$^{-1}$ & 20 & 13 & 10 & 8 & 7 & 6 & 5 \\
+                            \hline
+                            \multicolumn{8}{|c|}{$\Delta \nu \Delta t = 1,000 \pm 0,018$} \\
+                            \hline
+                            \end{tabular}
+                        \end{center}
+                    \end{table}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.32\textwidth}
+                    \par Теперь проведём измерения зависимости ширины спектра от $\Delta \nu$ и установим зависимость между $\Delta \nu$ и $\tau$, полученную
+                    из формулы (6).
+                    \par В итоге получаем, что формула (6) довольно точно выполняется.
+                \end{minipage}
+            \end{figure}
+
+        \subsection{Исследование спектра периодической последовательности цугов}
+            \begin{figure}[H]
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=0.91\textwidth]{images/AKIP0008.png}
+                    \caption{Последовательность цугов.}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=0.91\textwidth]{images/AKIP0009.png}
+                    \caption{Спектр последовательности цугов.}
+                \end{minipage}
+            \end{figure}
+            \par Получим на экране последовательность цугов (рис. 8) с характерными параметрами: $\nu_0 = 50$ кГц, $T = 1$ мс, число периодов в одном импульсе
+            $N = 5$ (длительность импульса $\tau = T/\nu_0 = 100$ мкс). Так же для этого сигнала получаим картину спектра (рис. 9).
+            \par Теперь будем менять эти параметры по одному и зафиксируем несколько таких изменений. Результаты приведены на рис.10-15.
+            \begin{figure}[H]
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=0.98\textwidth]{images/AKIP0010.png}
+                    \caption{$\nu_0 = 50$ кГц, $T = 1$ мс, $N = 10$.}
+                    \vspace{0.5cm}
+                    \includegraphics[width=0.98\textwidth]{images/AKIP0013.png}
+                    \caption{$\nu_0 = 50$ кГц, $T = 2.5$ мс, $N = 5$.}
+                    \vspace{0.5cm}
+                    \includegraphics[width=0.98\textwidth]{images/AKIP0015.png}
+                    \caption{$\nu_0 = 75$ кГц, $T = 1$ мс, $N = 5$.}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=0.98\textwidth]{images/AKIP0011.png}
+                    \caption{$\nu_0 = 50$ кГц, $T = 1$ мс, $N = 15$.}
+                    \vspace{0.5cm}
+                    \includegraphics[width=0.98\textwidth]{images/AKIP0012.png}
+                    \caption{$\nu_0 = 50$ кГц, $T = 5$ мс, $N = 5$.}
+                    \vspace{0.5cm}
+                    \includegraphics[width=0.98\textwidth]{images/AKIP0014.png}
+                    \caption{$\nu_0 = 100$ кГц, $T = 1$ мс, $N = 5$.}
+                \end{minipage}
+            \end{figure}
+            \begin{figure}[H]
+                \begin{minipage}{0.45\textwidth}
+                    \par Теперь зафиксируем $\nu_0 = 50$ кГц, $N = 5$. Для этих параметров измерим, меняя $T$ ($\nu_{\text{повт}})$, зависимость $\delta \nu$
+                    от $\tau$.
+                    \par В итоге: $\delta \nu / \nu_{\text{повт}} = 1.05 \pm 0.08$
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.52\textwidth}
+                    \begin{table}[H]
+                        \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedright,
+                        singlelinecheck=false, skip=-0.2cm}
+                        \caption{Исследование зависимости $\Delta t$ от $\Delta \nu$}
+                        \begin{center}
+                            \begin{tabular}{|p{1.8cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|}
+                                \hline
+                                $\Delta \nu$, кГц & 23 & 32 & 35 & 38 & 35 & 45 \\
+                                \hline
+                                $n$ & 42 & 33 & 18 & 13 & 10 &  8 \\
+                                \hline
+                                $\nu_{\text{повт}}$, кГц & 0.5 & 1.0  & 2.0  & 3.0  & 4.0 & 6.0 \\
+                                \hline
+                            \end{tabular}
+                        \end{center}
+                    \end{table}
+                \end{minipage}
+            \end{figure}
+        
+        \subsection{Исследование спектра амплитудно модулированного сигнала}
+            Получим картину амплитудно-модулированного сигнала с характерными параметрами (рис.17): несущая частота $\nu_0 = 50$ кГц,
+            $\nu_{\text{мод}} = 2$ кГц, глубину модуляции - 50 \% ($m = 0,5$). Найдем для него $A_{max}$ и $A_{min}$  (таблица 4) и проверим справедливость
+            формулы (9).
+            \begin{figure}[H]
+                \begin{minipage}{0.7\textwidth}
+                    \includegraphics[width=\textwidth]{images/AKIP0016.png}
+                    \caption{Картина амплитудно-модулированного сигнала.}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.27\textwidth}
+                    \begin{table}[H]
+                        \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                        singlelinecheck=false, skip=-0.2cm}
+                        \caption{}
+                        \begin{center}
+                            \begin{tabular}{|c|c|c|}
+                                \hline
+                                $A_{max}$, В & $A_{min}$, В & $m$ \\
+                                \hline
+                                1,52 & 0,48 & 0,52 \\
+                                \hline
+                            \end{tabular}
+                        \end{center}
+                    \end{table}
+                \end{minipage}
+            \end{figure}
+            \par Получим на экране спектр сигнала и будем изменять его параметры
+            \begin{figure}[H]
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images/AKIP0019.png}
+				    \caption{$\nu_0 = 60$ кГц, $\nu_{\text{мод}} = 2$ кГц.}
+                    \vspace{0.5cm}
+                    \includegraphics[width=\textwidth]{images/AKIP0021.png}
+				    \caption{$\nu_0 = 50$ кГц, $\nu_{\text{мод}} = 8$ кГц.}
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.49\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{images/AKIP0020.png}
+				    \caption{$\nu_0 = 70$ кГц, $\nu_{\text{мод}} = 2$ кГц.}
+                    \vspace{0.5cm}
+                    \includegraphics[width=\textwidth]{images/AKIP0022.png}
+				    \caption{$\nu_0 = 50$ кГц, $\nu_{\text{мод}} = 16$ кГц.}
+                \end{minipage}
+            \end{figure}
+            \begin{figure}[H]
+                \begin{minipage}{0.37\textwidth}
+                    \par Из формулы $(10)$ следует, что $a_{\text{осн}} = A_0$, а $a_{\text{бок}} =$ 0,5 $\cdot mA_0$. Проверим это с помощью данных из
+                    таблицы 5.
+                    \par Согласно нашим измерениям $a_{\text{бок}}/a_{\text{осн}} \cdot m \approx$ 0,5, что согласуется с предсказаниями теории.
+                \end{minipage}
+                \hfill
+                \begin{minipage}{0.60\textwidth}
+                    \begin{table}[H]
+                        \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                        singlelinecheck=false, skip=-0.2cm}
+                        \caption{Исследование зависимости $a_{\text{бок}}/a_{\text{осн}}$ от $m$.}
+                        \begin{center}
+                            \begin{tabular}{|p{2.7cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|}
+                                \hline
+                                $m$, \% & 10 & 25 & 50 & 75 & 100 \\
+                                \hline
+                                $a_{\text{бок}}$, мВ & 360 & 820 & 1660 & 2320 & 3260 \\
+                                \hline
+                                $a_{\text{осн}}$, мВ & 6240 & 6240 & 6240 & 6240 & 6240 \\
+                                \hline
+                                $a_{\text{бок}}/a_{\text{осн}}$ & 0,06 & 0,13 & 0,27 & 0,37 & 0,52 \\
+                                \hline
+                                $a_{\text{бок}}/a_{\text{осн}} \cdot m$, \% & 57,69 & 52,56 & 53,21 & 49,57 & 52,24 \\
+                                \hline
+                                \multicolumn{6}{|c|}{$a_{\text{бок}}/a_{\text{осн}} \cdot m = (53,1 \pm 1,31)$, \%} \\
+                                \hline
+                            \end{tabular}
+                        \end{center}
+                    \end{table}
+                \end{minipage}
+            \end{figure}
+    
+    \section{Вывод}
+    \par Мы убедились в справедливости разложения в ряд Фурье сигналов, с помощью анализа спектра сигналов и получения для них характерных величин и
+    проверки закономерностей. 
+
+\end{document}

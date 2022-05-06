@@ -1,0 +1,74 @@
+% This file was created with tikzplotlib v0.9.16.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+
+\begin{axis}[
+    height=13cm,
+    tick align=inside,
+    major tick length=0.2cm,
+    minor tick length=0.1cm,
+    tick pos=left,
+    xmin=0, xmax=8,
+    xtick={0, 1, 2, 3, 4, 5, 6, 7, 8},
+    minor x tick num=4,
+    xmajorgrids,
+    minor x grid style={dotted,black},
+    xminorgrids,
+    xtick style={color=black},
+    xlabel={$m$},
+    ymin=0, ymax=6400,
+    ytick={0, 1000, 2000, 3000, 4000, 5000, 6000, 7000},
+    minor y tick num=4,
+    ymajorgrids,
+    minor y grid style={dotted,black},
+    yminorgrids,
+    ytick style={color=black},
+    ylabel={$r^2$, мм}
+]
+\path [draw=red, semithick]
+(axis cs:1,584.0625)
+--(axis cs:1,794.0625);
+
+\path [draw=red, semithick]
+(axis cs:2,1449.91850773723)
+--(axis cs:2,1631.20649226277);
+
+\path [draw=red, semithick]
+(axis cs:3,2065.88016740293)
+--(axis cs:3,2399.24483259707);
+
+\path [draw=red, semithick]
+(axis cs:4,2806.22222222222)
+--(axis cs:4,3170.66666666667);
+
+\path [draw=red, semithick]
+(axis cs:5,3478.22222222222)
+--(axis cs:5,3882.66666666667);
+
+\path [draw=red, semithick]
+(axis cs:6,4496.75011825925)
+--(axis cs:6,5025.24988174075);
+
+\path [draw=red, semithick]
+(axis cs:7,5475)
+--(axis cs:7,5775);
+
+\addplot [semithick, color0]
+table {%
+0 0
+8 6215.13571428704
+};
+\addplot [semithick, red, mark=square*, mark size=3, mark options={solid}, only marks]
+table {%
+1 689.0625
+2 1540.5625
+3 2232.5625
+4 2988.44444444444
+5 3680.44444444444
+6 4761
+7 5625
+};
+\end{axis}
+
+\end{tikzpicture}

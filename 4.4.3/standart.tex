@@ -1,0 +1,29 @@
+\newpage\pagenumbering{gobble}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{data/approved.pdf}
+    \end{center}
+\end{figure}
+
+\begin{wrapfigure}{r}{size}
+    \centering
+    \includegraphics[width=size]{filename}
+    \caption{name}
+\end{wrapfigure}
+
+\begin{table}[H]
+    \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                singlelinecheck=false, skip=-0.2cm}
+    \caption{name}
+    \begin{center}
+        \include{filename}
+    \end{center}
+\end{table}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=size]{filename}
+        \caption{name}
+    \end{center}
+\end{figure}

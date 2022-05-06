@@ -1,0 +1,391 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{misccorr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{circuitikz}
+\usepackage[font={small}]{caption}
+\usepackage[left=20mm, top=20mm, right=20mm, bottom=20mm, nohead]{geometry}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pstool}
+\usepackage{pgfplots}
+\usepackage{hhline}
+\usepackage{multirow}
+
+\DeclareCaptionLabelSeparator{fill}{.\\}
+\DeclareCaptionLabelFormat{fullparents}{\bothIfFirst{#1}{~}#2}
+\DeclareCaptionLabelFormat{empty}{}
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			{\LARGE Отчёт по лабораторной работе 2.5.1.\\}
+			\vspace*{11cm}
+				\textbf{\LARGE Измерение коэффициента поверхностного натяжения жидкости.}	
+			\vspace*{6cm}
+		\end{center}
+		\hfill\begin{minipage}{0.35\textwidth}
+				Работу выполнил Грмов Артём\\
+				ЛФИ Б02-006
+		\end{minipage}
+		\vspace{5cm}
+		\begin{center}
+ 			Долгопрудный, 2021 г.
+		\end{center}   
+	\end{titlepage}
+	
+	\section{Аннотация}
+		\noindent\textbf{Цель работы: }
+		\begin{enumerate}
+			\item измерение температурной зависимости  коэффициента поверхностного натяжения дистиллированной воды с
+			использованием известного коэффициента поверхностного натяжения спирта;
+			\item определение полной поверхностной энергии  и теплоты, необходимой для изотермического образования единицы
+			поверхности жидкости при различной температуре.
+		\end{enumerate}
+		\noindent\textbf{В работе используются: } прибор  Ребиндера  с термостатом и микроманометром; исследуемые жидкости;
+		стаканы.
+		\vspace{0.5 cm}
+		\par Наличие поверхностного слоя приводит к различию давлений по разные стороны от искривленной границы раздела двух
+		сред. Для сферического пузырька с воздухом  внутри жидкости избыточное давление даётся формулой Лапласа:
+		\begin{equation}
+			\Delta P=P_{\text{внутри}}-P_{\text{снаружи}}=\frac{2\sigma}{r}.
+		\end{equation}
+		\noindent где $\sigma$ --- коэффициент поверхностного натяжения, $P_{\text{внутри}}$ и $P_{\text{снаружи}}$ --- давления
+		внутри пузырька и снаружи, $r$ --- радиус кривизны поверхности раздела двух фаз. Эта формула лежит в основе
+		предлагаемого мктода определения коэффициента поверхностного натяжения жидкости. Измеряется давление $\Delta P$,
+		необходимое для выталкивания в жидкость пузырька газа.
+	\section{Экспериментальная установка}
+		\par Исследуемая жидкость (дистиллированная вода) наливается в сосуд (колбу) B (рис.1). Тестовая жидкость (этиловый спирт)
+		наливается в сосуд E. Приизмерениях колбы герметично закрываются пробками. Через одну из двух пробок проходит полая
+		металлическая игла C. Этой пробкой закрывается сосуд, в котором проводятся измерения. Верхний конец иглы открыт в
+		атмосферу, а нижний погружен в жидкость. Другой сосуд герметично закрывается второй пробкой. При создании достаточного
+		разряжения воздуха в колбе с иглой пузырьки воздуха начинают пробулькивать через жидкость. Поверхностное натяжение можно
+		определить по величине разряжения $\Delta P$, необходимого для прохождения пузырьков, с помощью формулы (1) (при
+		известном радиусе иглы).
+		\par Разряжение в системе создается с помощью аспиратора А. Кран К2 разделяет две полости аспиратора. Верхняя полость при
+		закрытом кране К2 заполняется водой. Затем кран К2 открывают и заполняют водой нижнюю полость аспиратора. Разряжение
+		воздуха создается в нижней полости при открывании крана К1, когда вода вытекает из неё по каплям. В колбах В и С,
+		соединённых
+		трубками с нижней полостью аспиратора, создается такое же пониженное давление. Разность давлений в полостях с
+		разряженным воздухом и атмосферой измеряется спиртовым микроманометром.
+		\par Для стабилизации температуры исследуемой жидкости через рубашку D колбы В непрерывно прогоняется вода из
+		термостата.
+		\par Обычно кончик иглы лишь касается поверхности жидкости, чтобы исключить влияние гидростатического давления столба
+		жидкости. Однако при измерении температурной зависимости коэффициента поверхностного натяжения возникает ряд
+		сложностей. Во-первых, большая теплопроводность металлической трубки приводит к тому, что температура на конце трубки
+		заметно ниже, чем в глубине жидкости. Во-вторых, тепловое расширение поднимает уровень жидкости при увеличении
+		температуры.
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=\textwidth]{C:/Users/gromo/Desktop/Установка251.png}
+				\caption{Схема установки для измерения температурной зависимости коэффициента поверхностного натяжения}
+			\end{center}
+		\end{figure}
+		\par Обе погрешности можно устранить, погрузив кончик трубки до самого дна. Полное давление, измеренное при этом
+		микроманометром, $P=\Delta P+\rho gh$. Заметим, что $\rho gh$ от температуры практически не зависит, так как подъём уровня
+		жидкости компенсируется уменьшением её плотности (произведение $\rho h$ определяется массой всей жидкости и поэтому
+		постоянно). Величину $\rho gh$ следует измерить двумя способами. Во-первых, замерить величину $P_{1}\Delta P'$, когда кончик
+		трубки только касается поверхности жидкости. Затем при этой же температуре опустить иглу до дна и замерить
+		$P_{2}=\rho gh+\Delta P''$ ($\Delta P'$, $\Delta P''$ --- давления Лапласа). Из-за несжимаемости жидкости можно положить
+		$\Delta P'=\Delta P''$ и тогда $\rho gh=P_{2}-P_{1}$. Во-вторых, при измерениях $P_{1}$ и $P_{2}$ замерить линейкой глубину
+		погружения иглы $h$. Это можно сделать, замеряя расстояние между верхним концом иглы и любой неподвижной частью
+		прибора при положении иглы на поверхности и в глубине колбы.
+	\section{Результаты измерений и обработка данных}
+		\subsection{Измерение диаметра иглы}
+		\par Измерение диаметра иглы проведём двумя методами:
+		\begin{enumerate}
+			\item напрямую, с помощью микроскопа;
+			\item косвенно, определяя максимальное давление $\Delta P_{\text{спирта}}$ при пробулькивании пузырьков воздуха через
+			спирт.
+		\end{enumerate}
+		\par С помощью микроскопа получим значение: $d_{\text{мик}}=1.15\pm0.05$ мм.
+		\par Для измерения диаметра иглы вторым способом проведём серию из трёх измерений давления  $\Delta P_{\text{спирта}}$.
+		Учтём, что погрешность микроманометра составляет $\Delta_{\text{ман}}=1$ деление. Полученные данные занесём в таблицу 1. 
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения $\Delta P_{\text{спирта}}$}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+				      \hline 
+					\multicolumn{3}{|>{\centering}p{6cm}|}{Серия измерений $\Delta P_{\text{спирта}}$, дел} & 
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\Delta P_{\text{ср}}$, дел}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{случ}}$, дел}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{полн}}$, дел}} \\
+					\hhline{---~~~} 1 & 2 & 3 & & & \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{39} & \multicolumn{1}{p{2cm}|}{39} 
+					& \multicolumn{1}{p{2cm}|}{39} & \multicolumn{1}{p{2cm}|}{39} & \multicolumn{1}{p{2cm}|}{0} 
+					& \multicolumn{1}{p{2cm}|}{1} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\par Случайную и полную погрешности  рассчитаем используя следующие формулы:
+		\begin{equation}
+			\sigma_{\text{случ}}=\sqrt{\frac{1}{n(n-1)}\sum{\left(x_{i}-x_{\text{ср}}\right)}},
+		\end{equation}
+		\begin{equation}
+			\sigma_{\text{полн}}=\sqrt{\sigma^{2}_{\text{случ}}+\sigma^{2}_{\text{приб}}},
+		\end{equation}
+		\noindent где $n$ --- количество измерений данной величины, $x_{\text{ср}}$ --- её среднее значение, $x_{i}$ --- её значение в
+		конкретном опыте, $\sigma^{2}_{\text{приб}}$ --- приборная погрешность.
+		\par Для перевода показаний микроманометра в паскали надо воспользоваться слдующей формулой:
+		\begin{equation}
+			P=C \cdot h \cdot \frac{\gamma_{\text{сп залит}}}{\gamma_{\text{сп пр}}} \cdot K \cdot 9.81,
+		\end{equation}
+		\noindent где $P$ --- давление в паскалях; $C=1$ --- поправочный множитель; $h$ --- значение в делениях шкалы; $K=0.2$ ---
+		постоянная угла наклона; $\gamma_{\text{сп залит}}$ --- плотность спирта, залитого в прибор;
+		$\gamma_{\text{сп пр}}=0.8095\text{ гм/см}^{3}$ --- плотность спирта, указанная на приборе.
+		\par Определяя диаметр иглы с помощью формулы (1), получаем следущие значения: от $d_{\text{спир}}=1.12\pm0.03$ мм до
+		$d_{\text{спир}}=1.17\pm0.03$ мм. Точное значение зависит от залитого в прибор спирта. Оба значения совпадают с диаметром
+		измереным на микроскопе в пределах погрешностей, поэтому будем в дальнейших расчётах использовать $d_{\text{мик}}$.
+		\par Результаты этого опыта используем для определения плотности залитого в прибор спирта
+		$\gamma_{\text{сп залит}}\approx0.8205\text{ гм/см}^{3}$. 
+		\subsection{Определение глубины погружения иглы}
+		\par Для проведения дальнейших опытов необходимо узнать глубину погружения иглы. Воспользуемся двумя методами
+		измерения этой величины:
+		\begin{enumerate}
+			\item напрямую, с помощью линейки;
+			\item косвенно, определяя разность давлений $P_{1}$ и $P_{2}$ при пробулткивании пузырьков воздуха через воду.
+			$P_{1}$ --- давление, когда игла находится у самой поверхности; $P_{2}$ --- давление на интересующей нас глубине.
+		\end{enumerate}
+		\par Измерения при помощи линейки дают нам следующие значения: $h_{1}=17\pm0.5$ мм, $h_{2}=6\pm0.5$ мм,
+		$\Delta h_{\text{лин}}=11\pm0.5$ мм ($h_{1}$ и $H_{2}$ растояния от конца иглы до дна сосуда в разных положениях).
+		\par Для определения глубины погружения иглы вторым способом измерим $P_{1}$ и $P_{2}$ с помощью серии из трёх опытов.
+		Данные занесём в таблицу 2. 
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения $P_{1}$ и $P_{2}$}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+				      \hline
+					\multicolumn{1}{|p{2cm}|}{\multirow{2}{2cm}{\centering Величина}} & 
+					\multicolumn{3}{>{\centering}p{6cm}|}{Серия измерений давления, дел} & 
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$d_{\text{ср}}$, дел}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{случ}}$, дел}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{полн}}$, дел}} \\
+					\hhline{~---~~~} & 1 & 2 & 3 & & & \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{$P_{1}$} & \multicolumn{1}{p{2cm}|}{95.0} & \multicolumn{1}{p{2cm}|}{96.0} 
+					& \multicolumn{1}{p{2cm}|}{97.0} & \multicolumn{1}{p{2cm}|}{96.0} & \multicolumn{1}{p{2cm}|}{0.6} 
+					& \multicolumn{1}{p{2cm}|}{1.2} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{$P_{2}$} & \multicolumn{1}{p{2cm}|}{154.0} & \multicolumn{1}{p{2cm}|}{153.0} 
+					& \multicolumn{1}{p{2cm}|}{153.0} & \multicolumn{1}{p{2cm}|}{153.3} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.2} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\noindent С помощью формулы (2) и формулы для расчёта давления столба жидкости получим:
+		\begin{equation}
+			\Delta h=\frac{P_{1}-P_{2}}{\rho_{\text{воды}}g}.
+		\end{equation}
+		\noindent Окончательно получим, что $\Delta h_{\text{ман}}=11.6\pm0.3$ мм. Это значение сходится с полученным нами при
+		помощи другого метода в пределах погрешностей. В дальнейших расчётах будем использовать $\Delta h_{\text{ман}}$, так это
+		значение меньше зависит от человеческого фактора.
+		\subsection{Определение коэфициента поверхностного натяжения воды в зависимости от температуры}
+		\par Снимим температурную зависимость $\sigma_{\text{воды}}\left(T\right)$ дистилированной воды. Будем проводить измерения
+		в диапазоне от 20℃ до 60℃ через каждые 5℃. Для уменьшения случайной погрешности будем проводить серии из трёх опытов.
+		Полученные данные занесём в таблицу 3.
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения мкасимального давления пробулькивания}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}
+	  							|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|}
+				      \hline
+					\multicolumn{1}{|p{2cm}|}{\multirow{2}{2cm}{\centering T, ℃}} & 
+					\multicolumn{3}{>{\centering}p{6cm}|}{Серия измерений $P_{\text{ман}}$, дел} & 
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$P_{\text{ср}}$, дел}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{случ}}$, дел}} &
+					\multicolumn{1}{p{2cm}|}{\multirow{2}{2cm}{\centering$\sigma_{\text{полн}}$, дел}} \\
+					\hhline{~---~~~} & 1 & 2 & 3 & & & \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{20.0} & \multicolumn{1}{p{2cm}|}{154.0} & \multicolumn{1}{p{2cm}|}{153.0} 
+					& \multicolumn{1}{p{2cm}|}{153.0} & \multicolumn{1}{p{2cm}|}{153.3} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.0} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{25.0} & \multicolumn{1}{p{2cm}|}{150.0} & \multicolumn{1}{p{2cm}|}{153.0} 
+					& \multicolumn{1}{p{2cm}|}{153.0} & \multicolumn{1}{p{2cm}|}{152.0} & \multicolumn{1}{p{2cm}|}{1.0} 
+					& \multicolumn{1}{p{2cm}|}{1.4} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{30.0} & \multicolumn{1}{p{2cm}|}{150.0} & \multicolumn{1}{p{2cm}|}{151.0} 
+					& \multicolumn{1}{p{2cm}|}{151.0} & \multicolumn{1}{p{2cm}|}{150.7} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.0} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{35.2} & \multicolumn{1}{p{2cm}|}{148.0} & \multicolumn{1}{p{2cm}|}{148.0} 
+					& \multicolumn{1}{p{2cm}|}{149.0} & \multicolumn{1}{p{2cm}|}{148.3} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.0} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{40.2} & \multicolumn{1}{p{2cm}|}{146.0} & \multicolumn{1}{p{2cm}|}{147.0} 
+					& \multicolumn{1}{p{2cm}|}{147.0} & \multicolumn{1}{p{2cm}|}{146.7} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.0} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{45.1} & \multicolumn{1}{p{2cm}|}{147.0} & \multicolumn{1}{p{2cm}|}{146.0} 
+					& \multicolumn{1}{p{2cm}|}{146.0} & \multicolumn{1}{p{2cm}|}{146.3} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.0} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{50.1} & \multicolumn{1}{p{2cm}|}{146.0} & \multicolumn{1}{p{2cm}|}{145.0} 
+					& \multicolumn{1}{p{2cm}|}{146.0} & \multicolumn{1}{p{2cm}|}{145.7} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.0} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{55.1} & \multicolumn{1}{p{2cm}|}{144.0} & \multicolumn{1}{p{2cm}|}{144.0} 
+					& \multicolumn{1}{p{2cm}|}{143.0} & \multicolumn{1}{p{2cm}|}{143.7} & \multicolumn{1}{p{2cm}|}{0.3} 
+					& \multicolumn{1}{p{2cm}|}{1.0} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\noindent Погрешности были расчитаны по формулам (2) и (3). 
+		\par Теперь расчитаем коэффициент поверхностного натяжения воды $\sigma_{\text{воды}}$ по формле (1) при различных
+		температурах и оценим его погрешность используя выражение:
+		\begin{equation}
+			\sigma_{\sigma_{\text{воды}}}=\sqrt{\left(\frac{\sigma_{d}}{d}\right)^{2}+\left(\frac{\sigma_{\Delta P}}{\Delta P}\right)^{2}},
+		\end{equation}
+		\noindent где $\Delta P=P_{\text{ман}}-p_{\text{воды}}g\Delta h$.
+		\par Полученные данные занесём в таблицу 4.
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Результаты измерения $\sigma_{\text{воды}}$ при разных температурах}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{1.9cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}
+	  							|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}
+	  							|>{\centering}p{1.4cm}|}
+				      \hline
+				      	\multicolumn{1}{|p{2.2cm}|}{T, ℃} & \multicolumn{1}{p{1.2cm}|}{20.0} & \multicolumn{1}{p{1.2cm}|}{25.0} 
+					& \multicolumn{1}{p{1.2cm}|}{30.0} & \multicolumn{1}{p{1.2cm}|}{35.2} & \multicolumn{1}{p{1.2cm}|}{40.2} 
+					& \multicolumn{1}{p{1.2cm}|}{45.1} & \multicolumn{1}{p{1.2cm}|}{50.1} & \multicolumn{1}{p{1.2cm}|}{55.1} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{$\Delta P$, Па} & \multicolumn{1}{p{1.4cm}|}{191} & \multicolumn{1}{p{1.4cm}|}{188} 
+					& \multicolumn{1}{p{1.4cm}|}{186} & \multicolumn{1}{p{1.4cm}|}{181} & \multicolumn{1}{p{1.4cm}|}{178} 
+					& \multicolumn{1}{p{1.4cm}|}{177} & \multicolumn{1}{p{1.4cm}|}{176} & \multicolumn{1}{p{1.4cm}|}{172} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{$\sigma_{\Delta P}$, Па} &\multicolumn{1}{p{1.4cm}|}{5} &\multicolumn{1}{p{1.4cm}|}{5} 
+					& \multicolumn{1}{p{1.4cm}|}{5} & \multicolumn{1}{p{1.4cm}|}{5} & \multicolumn{1}{p{1.4cm}|}{5} 
+					& \multicolumn{1}{p{1.4cm}|}{5} & \multicolumn{1}{p{1.4cm}|}{5} & \multicolumn{1}{p{1.4cm}|}{5} \\
+					\hline
+					\multicolumn{1}{|p{2cm}|}{$\sigma_{\text{воды}}$, Н/м} 
+					& \multicolumn{1}{p{1.4cm}|}{0.055} & \multicolumn{1}{p{1.4cm}|}{0.054} 
+					& \multicolumn{1}{p{1.4cm}|}{0.053} & \multicolumn{1}{p{1.4cm}|}{0.052} & \multicolumn{1}{p{1.4cm}|}{0.051} 
+					& \multicolumn{1}{p{1.4cm}|}{0.051} & \multicolumn{1}{p{1.4cm}|}{0.051} & \multicolumn{1}{p{1.4cm}|}{0.050} \\
+					\hline
+					\multicolumn{1}{|p{2.2cm}|}{$\sigma_{\sigma_{\text{воды}}}$, Н/м} 
+					& \multicolumn{1}{p{1.4cm}|}{0.002} & \multicolumn{1}{p{1.4cm}|}{0.002} 
+					& \multicolumn{1}{p{1.4cm}|}{0.002} & \multicolumn{1}{p{1.4cm}|}{0.002} & \multicolumn{1}{p{1.4cm}|}{0.002} 
+					& \multicolumn{1}{p{1.4cm}|}{0.002} & \multicolumn{1}{p{1.4cm}|}{0.002} & \multicolumn{1}{p{1.4cm}|}{0.002} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\begin{figure}[H]
+			\begin{center}
+				\input{C:/Users/gromo/PycharmProjects/plottest/plot6.tex}
+			\end{center}
+			\captionsetup{font={small}, justification=justified}
+			\caption[figure]{График зависимости $\sigma_{\text{воды}}$ от $T$}
+		\end{figure}
+		\par Теоретическая прямая на нрафике (рис.2) была по =строена с помощью метода наименьших квадратов:
+		\begin{equation}
+			\frac{d\sigma_{\text{воды}}}{dT}=\frac{\langle\sigma_{\text{воды}} T\rangle
+			-\langle\sigma_{\text{воды}}\rangle\langle T\rangle}{\langle T^{2}\rangle-\langle T\rangle^{2}},
+			\ \ \ \ \sigma_{\text{воды}}(0)=\langle\sigma_{\text{воды}}\rangle-\frac{d\sigma_{\text{воды}}}{dT}\langle T\rangle
+		\end{equation}
+		\noindent где $\frac{d\sigma_{\text{воды}}}{dT}$ --- угловой коэффициент, а $\sigma_{\text{воды}}(0)$ --- свободный член.
+		Погрешность определения $\frac{d\sigma_{\text{воды}}}{dT}$ оценим по формуле:
+		\begin{equation}
+			\sigma_{\frac{d\sigma_{\text{воды}}}{dT}}=\frac{1}{\sqrt{N}}
+			\sqrt{\frac{\langle\sigma_{\text{воды}}\rangle-\langle\sigma_{\text{воды}}\rangle^{2}}
+						{\langle T^{2}\rangle-\langle T\rangle^{2}}-\left(\frac{d\sigma_{\text{воды}}}{dT}\right)^2}.
+		\end{equation}
+		\noindent В итоге получим следущее значение: 
+		$\frac{d\sigma_{\text{воды}}}{dT}=(-15.5\pm0.9)\cdot10^{-5}\text{ Н/(м}\cdot\text{К)}$.
+		\subsection{Удельная поверхностная энергия и теплота образования единицы площади поверхности}
+		\par Построим график зависимости теплоты образования еденицы поверхности жидкости $q$ от $T$ и график зависимости
+		поверхностной энергии на еденицу площади $\frac{U}{F}$ от $T$. Для этого воспользуемся формулами:
+		\begin{equation}
+			q=-T\cdot\frac{d\sigma_{\text{воды}}}{dT}, 
+			\ \ \ \ 
+			\frac{U}{F}=\left(\sigma-T\cdot\frac{d\sigma_{\text{воды}}}{dT}\right)=\sigma_{\text{воды}}(0).
+		\end{equation}
+		\par Для построения гарфиков запишем значения в таблицу 5:
+		\begin{table}[H]
+			\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+							singlelinecheck=false, skip=-0.2cm}
+			\caption{Значения $q$ и $\frac{U}{F}$ при разных температурах}
+			\begin{center}
+	  			\begin{tabular}{|>{\centering}p{2.4cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}
+	  							|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}|>{\centering}p{1.4cm}
+	  							|>{\centering}p{1.4cm}|}
+				      \hline
+				      	\multicolumn{1}{|p{2.6cm}|}{T, ℃} & \multicolumn{1}{p{1.3cm}|}{20.0} & \multicolumn{1}{p{1.3cm}|}{25.0} 
+					& \multicolumn{1}{p{1.3cm}|}{30.0} & \multicolumn{1}{p{1.3cm}|}{35.2} & \multicolumn{1}{p{1.3cm}|}{40.2} 
+					& \multicolumn{1}{p{1.3cm}|}{45.1} & \multicolumn{1}{p{1.3cm}|}{50.1} & \multicolumn{1}{p{1.3cm}|}{55.1} \\
+					\hline
+					\multicolumn{1}{|p{2.6cm}|}{$q$, $\text{Н/м}\cdot10^{-3}$} 
+					& \multicolumn{1}{p{1.1cm}|}{3.1} & \multicolumn{1}{p{1.1cm}|}{3.9} 
+					& \multicolumn{1}{p{1.1cm}|}{4.6} & \multicolumn{1}{p{1.1cm}|}{5.4} & \multicolumn{1}{p{1.1cm}|}{6.2} 
+					& \multicolumn{1}{p{1.1cm}|}{7.0} & \multicolumn{1}{p{1.1cm}|}{7.8} & \multicolumn{1}{p{1.1cm}|}{8.5} \\
+					\hline
+					\multicolumn{1}{|p{2.7cm}|}{$\sigma_{q}$, $\text{Н/м}\cdot10^{-3}$} 
+					&\multicolumn{1}{p{1.1cm}|}{0.2} &\multicolumn{1}{p{1.1cm}|}{0.2} 
+					& \multicolumn{1}{p{1.1cm}|}{0.3} & \multicolumn{1}{p{1.1cm}|}{0.3} & \multicolumn{1}{p{1.1cm}|}{0.4} 
+					& \multicolumn{1}{p{1.1cm}|}{0.4} & \multicolumn{1}{p{1.1cm}|}{0.4} & \multicolumn{1}{p{1.1cm}|}{0.5} \\
+					\hline
+					\multicolumn{1}{|p{2.7cm}|}{$\frac{U}{F}$, $\text{Н/м}$} 
+					& \multicolumn{1}{p{1.1cm}|}{0.058} & \multicolumn{1}{p{1.1cm}|}{0.058} 
+					& \multicolumn{1}{p{1.1cm}|}{0.058} & \multicolumn{1}{p{1.1cm}|}{0.057} & \multicolumn{1}{p{1.1cm}|}{0.057} 
+					& \multicolumn{1}{p{1.1cm}|}{0.058} & \multicolumn{1}{p{1.1cm}|}{0.058} & \multicolumn{1}{p{1.1cm}|}{0.058} \\
+					\hline
+					\multicolumn{1}{|p{2.2cm}|}{$\sigma_{\frac{U}{F}}$, Н/м} 
+					& \multicolumn{1}{p{1.1cm}|}{0.002} & \multicolumn{1}{p{1.1cm}|}{0.002} 
+					& \multicolumn{1}{p{1.1cm}|}{0.002} & \multicolumn{1}{p{1.1cm}|}{0.002} & \multicolumn{1}{p{1.1cm}|}{0.002} 
+					& \multicolumn{1}{p{1.1cm}|}{0.002} & \multicolumn{1}{p{1.1cm}|}{0.002} & \multicolumn{1}{p{1.1cm}|}{0.002} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\begin{figure}[H]
+			\begin{minipage}[H]{0.49\linewidth}
+				\center\input{C:/Users/gromo/PycharmProjects/plottest/plot7.tex}
+				\captionsetup{font={small}, labelformat=empty}
+				\center\caption{\ \ \ \ \ \ \ \ \ График зависимости $q$ от $T$}
+			\end{minipage}
+			\hfill
+			\begin{minipage}[H]{0.49\linewidth}
+				\center\input{C:/Users/gromo/PycharmProjects/plottest/plot8.tex}
+				\captionsetup{font={small}, labelformat=empty}
+				\center\caption{\ \ \ \ \ \ \ \ \ График зависимости $\frac{U}{F}$ от $T$}
+			\end{minipage}
+		\end{figure}
+	\section{Обсуждение результатов}
+		\par В данной работе мы определяли коэффициент поверхностного натяжения воды. Согласно справочнику ни одно из значений
+		не согласуется с экспериментальными. Так погрешность измерения оказалась порядка 5\%, то результаты нельзя списать на
+		плохие приборы. Одной из причин столь неудовлетворительных результатов, возможно, является попадание в иследуемую
+		жидкость остатков спирта. Так же последние опыты были плохо проведены из-за нехватки времени, однако они не могли
+		сильно повлиять на конечный результат. Зависимость $\sigma(T)$ хоть и получилась линейной в пределах погрешностей,
+		вызывает к себе много вопросов из-за маленького диапазона и неточных измерений.
+		\par Также в данной работе определялись удельная поверхностная энергия и теплота образования еденицы площади
+		поверхности. О второй величине никаких справочных материалов обнаружено не было. О качестве определения удельной
+		поверхностной энергии можно судить из общих представлений: так как это энергия взаимодействия молекул поверхностного слоя
+		с остальными, то она не должна сильно меняться с температурой из-за слабого расширения воды. В нашей это предположение
+		наблюдается.
+	\section{Вывод}
+		\par Данную работу можно охарактеризовать как неудачу. Последние измерения были выполнены довольно небрежно, а
+		качественные измерения дают не ожидаемый изначально результат. Однако небольшие погрешности измерений указывают на
+		то, что при более грамотном и аккуратном подходе к используемому оборудованию мы можем получить лучшие результаты.
+		
+\end{document}

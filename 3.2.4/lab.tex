@@ -1,0 +1,294 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{indentfirst}
+\usepackage{misccorr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{circuitikz}
+\usepackage[font={small}]{caption}
+\usepackage[left=20mm, top=20mm, right=20mm, bottom=20mm, nohead]{geometry}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pstool}
+\usepackage{pgfplots}
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{pdfpages}
+
+\DeclareCaptionLabelSeparator{fill}{.\\}
+\DeclareCaptionLabelFormat{fullparents}{\bothIfFirst{#1}{~}#2}
+
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			{\LARGE Отчёт по лабораторной работе 3.2.4.\\}
+			\vspace*{11cm}
+				\textbf{\LARGE Свободные колебания в электрическом контуре.}	
+			\vspace*{6.5cm}
+		\end{center}
+		\hfill\begin{minipage}{0.37\textwidth}
+				Работу выполнил Громов Артём
+				\\
+				ЛФИ Б02-006
+		\end{minipage}
+		\vspace{4.8cm}
+		\begin{center}
+ 			Долгопрудный, 2021 г.
+		\end{center}   
+	\end{titlepage}
+
+    \section{Аннотация}
+
+        \noindent\textbf{Цель работы:} исследование свободных колебаний в электрическом колебательном контуре.
+        \\
+        \noindent\textbf{В работе используются:} генератор импульсов, электронное реле, магазин сопротивлений, магазин ёмкостей,
+        катушка индуктивности, электронный осциллограф, универсальный измерительный мост.
+        \vspace{0.5 cm}
+        
+        \par Основное уравнение колебательного контура:
+        \begin{equation}
+            \ddot{I} + 2\gamma\dot{I} + \omega_0^2I = 0,
+        \end{equation}
+        \noindent где $ \gamma = \dfrac{R}{2L} $ --- коэффициент затухания, $ \omega_0^2 = \dfrac{1}{LC} $ --- собственная
+        частота контура. Решением этого уравнения являются затухающие колебания:
+        \begin{equation}
+            I = A e^{-\gamma t} \cos (\omega t - \theta).
+        \end{equation}
+        \noindent Здесь $ \omega = \sqrt{\omega_0^2 - \gamma^2} $. Можно записать решение \eqref{ddot I} и для напряжения:
+        \begin{equation}
+            U_C = U_0 \dfrac{\omega_0}{\omega} e^{-\gamma t}\cos (\omega t - \theta)
+        \end{equation}
+        \par В контуре со слабым затуханием $ (\omega \backsimeq \omega_0) $ верна \textbf{формула Томпсона} для периода: 
+        \begin{equation}
+            T = \dfrac{2\pi}{\omega_0} \backsimeq  \dfrac{2\pi}{\omega} = 2\pi\sqrt{LC}
+        \end{equation}
+        \par Режим работы контура, при котором $ \gamma = \omega_0 $, называется \textbf{критическим}. Его сопротивление равно 
+        \begin{equation}
+            R_{кр} = 2\sqrt{\dfrac{L}{C}}
+        \end{equation}
+        \par Потери затухающих колебаний принято характеризовать через \textbf{добротность} и
+        \textbf{логарифмический декремент затухания}: 
+        \begin{equation}
+            Q = 2\pi \dfrac{W}{\Delta W} = \dfrac{1}{R} \sqrt{\dfrac{L}{C}} \quad - \quad \text{Добротность, потери энергии}
+        \end{equation}
+        \begin{equation}
+            \Theta = \dfrac{1}{n} \gamma T = \dfrac{1}{n} \ln \dfrac{U_k}{U_{k+n}}  \quad - \quad \text{Лог. декремент, потери амплитуды}
+        \end{equation}
+	
+	\section{Экспериментальна установка}
+
+        \par В работе исследуются свободные колебания, возбуждаемые в колебательном RLC-контуре. Конденсатор контура заряжается
+        поступающими от специального генератора короткими одиночными импульсами, после каждого из которых в контуре возникают
+        свободные затухающие колебания. По картине колебаний, наблюдаемой на экране электронного осциллографа, можно определить
+        период свободных колебаний в контуре и коэффициент затухания, и вычислить параметры колебательного контура.
+        Характеристики контура можно также определить, рассматривая затухающие колебания на фазовой плоскости системы на экране
+        осциллографа.
+        \begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=\textwidth]{images/stand.pdf}
+				\caption{Схема установки для исследования свободных колебаний.}
+			\end{center}
+		\end{figure}
+        \par На рисунке 1 приведена схема используемой установки. Для периодического возбуждения колебаний в контуре используется
+        генератор импульсов Г5-54. Импульсы с частотой $\nu_0$ = 100 Гц ($T_0$ = 0,01 с) заряжают конденсатор. После каждого
+        импульса генератор отключается от колебательного контура, и в контуре возникают свободные затухающие колебания.
+        Осциллограф не оказывает влияния на цепь, имея сопротивление 1 МОм.
+
+    \section{Результаты измерений и обработка данных}
+
+    \subsection{Измерение периодов свободных колебаний}
+        \par Проведем измерения при $ R = 0 $. Будем изменять емкость от 0.02 до 0.90 мкФ, проводя измерения периода по формуле:
+        \begin{equation}\label{}
+            T_{\text{эксп}} = T_0 \dfrac{x}{nx_0},
+        \end{equation}
+        \noindent где $ T_0 = 0,01 $ c, $ x_0 $ --- расстояние одного импульса, $ x $ --- расстояние $ n $ импульсов. Погрешность
+        $ \sigma_x = \sigma_{x_0} = 0,1, \sigma_{T_0} = 0,001  $c. Тогда 
+        \begin{equation}\label{}
+            \sigma_{T_\text{э}} = T_{\text{э}} \sqrt{ \left( \dfrac{ \sigma_x}{x} \right)^2 + \left( \dfrac{ \sigma_{x_0}}{x_0} 
+            \right)^2  + \left( \dfrac{ \sigma_{T_0}}{T_0} \right)^2}
+        \end{equation}
+        \par При рассчёте $T_{\text{теор}}$ возьмём значение $L=393\pm2$ мГн.
+        Результаты сведем в таблицу \ref{resT} и построим график рис. 2. 
+        \par В результате аппроксиации получим, что $k = 1.1598 \pm 0.0012$
+
+        \subsection{Критическое сопротивление и декремент затухания}
+
+        \par Приняв $ L = 400 $ мГн, вычислим емкость по формуле $ \nu_0 = 1/2\pi\sqrt{LC}$, где $\nu_0 = 5$ кГц .Значит, $ C = 5  $ нФ. Тогда 
+         
+         \begin{equation}\label{}
+         R_ {\text{кр}} = 2 \sqrt{\dfrac{L}{C}} \approx 17.6 \text{кОм}
+         \end{equation}
+
+    \par Получим на осцилографе ситуацию соответсвующую критическому режиму. Критический режим реалезовался при $R=17.6$ кОм.
+        
+        
+    
+    \begin{table}[H]
+        \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                singlelinecheck=false, skip=-0.2cm}
+        \caption{Результаты измерений}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|}
+            \hline
+            $C$, мкФ & $x_0$ & $n$ & $x$ & $T_{\text{эксп}}$, мс & $\sigma_{T_\text{э}}$, мс
+            & $T_{\text{теор}}$, мс & $\sigma_{T_\text{т}}$, мс \\
+            \hline
+            0.02 & 6.0 & 2 & 0.7 & 0.58 & 0.2 & 0.56 & 0.01 \\
+            \hline
+            0.09 & 3.0 & 2 & 0.6 & 1.00 & 0.39 & 1.18 & 0.02 \\
+            \hline
+            0.15 & 6.0 & 4 & 3.5 & 1.46 & 0.17 & 1.52 & 0.02 \\
+            \hline
+            0.22 & 6.0 & 3 & 3.0 & 1.67 & 0.21 & 1.84 & 0.02 \\
+            \hline
+            0.35 & 6.0 & 3 & 3.3 & 1.83 & 0.22 & 2.32 & 0.03 \\
+            \hline
+            0.48 & 6.0 & 3 & 4.0 & 2.22 & 0.26 & 2.72 & 0.04 \\
+            \hline
+            0.59 & 6.5 & 3 & 4.5 & 2.31 & 0.26 & 3.02 & 0.04 \\
+            \hline
+            0.75 & 6.5 & 2 & 3.4 & 2.62 & 0.32 & 3.4 & 0.04 \\
+            \hline
+            0.87 & 6.5 & 2 & 4.3 & 3.31 & 0.38 & 3.66 & 0.05 \\
+            \hline
+            0.90 & 6.5 & 2 & 4.6 & 3.54 & 0.4 & 3.72 & 0.05 \\
+            \hline
+            \end{tabular}
+        \end{center}    
+    \label{resT}
+    \end{table} 
+    \begin{figure}[H]
+        \begin{center}
+            \input{plots/tex/fer_plot.tex}
+            \caption{Зависимость $T_{\text{эксп}}$ от $T_{\text{теор}}$.}
+        \end{center}
+    \end{figure}
+
+    Установим $ C $ на магазине емкостей, будем наблюдать картину затухающих колебаний, изменяя $ R $ от $ 0.1 R_{\text{кр}}$ до $ 0.3 R_{\text{кр}} $.
+    \begin{table}[H]
+        \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                singlelinecheck=false, skip=-0.2cm}
+        \caption{Результаты измерений}
+        \begin{center}
+        
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}
+            \hline
+            $ R $, Ом & $ n $ & $ U_k$ & $ U_{k+n} $& $ \Theta $& $ \sigma_\Theta $ & $ R_\text{к} $, Ом & $ \sigma_{R_\text{к}} $, Ом \\
+            \hline
+            1100 & 3 & 3.0 & 0.9 & 0.40 & 0.05 & 1142 & 2 \\
+            \hline
+            1400 & 3 & 3.0 & 0.6 & 0.54 & 0.09 & 1442 & 3 \\
+            \hline
+            1800 & 2 & 2.9 & 0.8 & 0.64 & 0.08 & 1842 & 4 \\
+            \hline
+            2200 & 2 & 2.8 & 0.6 & 0.77 & 0.13 & 2242 & 4 \\
+            \hline
+            2500 & 1 & 2.7 & 1.0 & 0.99 & 0.11 & 2542 & 5 \\
+            \hline
+            2700 & 1 & 2.6 & 0.9 & 1.06 & 0.12 & 2742 & 5 \\
+            \hline
+            3300 & 1 & 2.5 & 0.8 & 1.14 & 0.15 & 3342 & 7 \\
+            \hline
+            3600 & 1 & 2.5 & 0.7 & 1.27 & 0.19 & 3642 & 7 \\
+            \hline
+        \end{tabular}% 
+        \label{resR}% 
+    \end{center}
+    \end{table}% 
+
+    Теперь, изменяя сопротивление от примерно $ 0.1 R_{\text{кр}} $ до $ 0,3 R_{\text{кр}} $, будем измерять амплитуды колебаний, разделенных на $ n $ частей. Погрешности амплитуд $  \sigma_{U_k} = \sigma_{U_{k+n}} = 0,1 $, т.е. 
+
+\begin{equation}
+\sigma_{\Theta} = \Theta \sqrt{ \left( \dfrac{ \sigma_{U_k}}{U_k} \right)^2 + \left( \dfrac{ \sigma_{U_{k+n}} }{U_{k+n}} \right)^2 }
+\end{equation}
+
+Измерив на универсальном мосте сопротивление катушки при нашей частоте 5 кГц, добавим его к сопротивлению магазина, получив сопротивление контура $R_\text{к}$. Результаты сведем в таблицу 2. Теперь построим график $ \dfrac{1}{\Theta^2} $ от $ \dfrac{1}{R^2} $, считая погрешность $ \sigma_{\frac{1}{\Theta^2}} = 2 \dfrac{1}{\Theta^2} \dfrac{\sigma_\Theta}{\Theta}$ Данные для графика рис. 2 сведены в таблице 3.
+
+\begin{table}[H]
+	\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                singlelinecheck=false, skip=-0.2cm}
+        \caption{Результаты измерений}
+        \begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+	$ \dfrac{1}{\Theta^2} $& $ \sigma_{\frac{1}{\Theta^2}} $ & $ \dfrac{1}{R^2}, 10^{-6} \text{ Ом}^{-2}$  \\
+		\hline
+		6.21 & 0.75 & 0.77 \\
+        \hline
+		3.47 & 0.68 & 0.48 \\
+        \hline
+		2.41 & 0.63 & 0.29 \\
+        \hline
+		1.69 & 0.57 & 0.2 \\
+        \hline
+		1.01 & 0.22 & 0.15 \\
+        \hline
+		0.89 & 0.21 & 0.13 \\
+        \hline
+		0.77 & 0.2 & 0.09 \\
+        \hline
+		0.62 & 0.18 & 0.08 \\
+		\hline
+	\end{tabular}% 
+	\label{res}%
+\end{center} 
+\end{table}% 
+\par После аппроксимации получим следущее значение $k=7.86 \pm 0.03 \text{ Ом}^6$. Откуда $R_{\text{к}} = 17.62\pm0.07$ кОм.
+\begin{table}[H]
+	\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                singlelinecheck=false, skip=-0.2cm}
+        \caption{Результаты исследования $R_{\text{кр}}$}
+        \begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+        $R_{\text{теор}}$, кОм & $R_{\text{подбор}}$, кОм & $R_{\text{эксп}}$, кОм \\
+		\hline
+        17.6 & 17.6 & $17.62\pm0.07$ \\
+        \hline
+	\end{tabular}% 
+\end{center} 
+\end{table}% 
+
+\begin{figure}[H]
+    \begin{center}
+        \input{plots/tex/plot2.tex}
+        \caption{Зависимость $ \dfrac{1}{\Theta^2} $ от $ \dfrac{1}{R^2} $.}
+    \end{center}
+\end{figure}
+\subsection{Исследование добротности}
+
+Рассчитаем добротность системы тремя способами. Сначала воспользуемся формулой (6) для двух значений сопротивления.
+А затем для них же воспользуемся формулой (7), измерив на спирали расстояния между крайними витками. Третий способ заключается в применении (6) и значений
+$\Theta$, полученных из графика на рисунке 3.
+\begin{table}[H]
+	\captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                singlelinecheck=false, skip=-0.2cm}
+        \caption{Результаты расчёта добротности}
+        \begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+        $R$, Ом & $Q_{\text{теор}}$ & $Q_{\text{спир}}$ & $Q_{\text{граф}}$ \\
+		\hline
+        1000 & $7.7\pm0.2$ & $7.8\pm0.5$ &$8.8\pm0.2$ \\
+        \hline
+        3000 & $2.4\pm0.1$ & $2.5\pm0.4$ &$2.9\pm0.1$\\
+        \hline
+	\end{tabular}% 
+\end{center} 
+\end{table}% 
+
+\section{Вывод}
+
+\par При исследовании периодов свободных колебаний и критического сопротивления результаты согласуются с теорией. Но при изучении
+добротности результаты расходятся.
+
+\end{document}

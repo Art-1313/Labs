@@ -1,0 +1,64 @@
+% This file was created with tikzplotlib v0.9.16.
+\begin{tikzpicture}
+
+    \begin{axis}[
+        height=11.5cm,
+        tick align=inside,
+        major tick length=0.2cm,
+        minor tick length=0.1cm,
+        tick pos=left,
+        x grid style={white!69.0196078431373!black},
+        xmin=2, xmax=13,
+        xtick={2, 4, 6, 8, 10, 12, 14},
+        minor x tick num=4,
+        xmajorgrids,
+        minor x grid style={dotted,black},
+        xminorgrids,
+        xtick style={color=black},
+        xlabel={$n$},
+        ymin = 50, ymax = 540,
+        ytick = {0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550},
+        ytick style={color=black},
+        minor y tick num=4,
+        ymajorgrids,
+        minor y grid style={dotted,black},
+        yminorgrids,
+        ytick style={color=black},
+        ylabel={$T$, \text{с}}
+    ]
+\addplot [semithick, black]
+table {%
+2 82.7922222223985
+13 538.14944444559
+};
+\path [draw=red, semithick]
+(axis cs:4,74.6)
+--(axis cs:4,154.6);
+
+\path [draw=red, semithick]
+(axis cs:6,199.3)
+--(axis cs:6,259.3);
+
+\path [draw=red, semithick]
+(axis cs:8,303)
+--(axis cs:8,383);
+
+\path [draw=red, semithick]
+(axis cs:10,408.6)
+--(axis cs:10,508.6);
+
+\path [draw=red, semithick]
+(axis cs:12,418.2)
+--(axis cs:12,538.2);
+
+\addplot [semithick, red, mark=*, mark size=3, mark options={solid}, only marks]
+table {%
+4 114.6
+6 229.3
+8 343
+10 458.6
+12 478.2
+};
+\end{axis}
+
+\end{tikzpicture}

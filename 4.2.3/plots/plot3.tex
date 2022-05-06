@@ -1,0 +1,184 @@
+% This file was created with tikzplotlib v0.9.16.
+\begin{tikzpicture}
+
+\begin{axis}[
+    height=6.5cm,
+    title=Обработанные данные,
+    tick align=inside,
+    major tick length=0.2cm,
+    minor tick length=0.1cm,
+    tick pos=left,
+    x grid style={white!69.0196078431373!black},
+    xmin=-1000, xmax=1000,
+    xtick={-1000, -500, 0, 500, 1000},
+    minor x tick num=4,
+    xmajorgrids,
+    minor x grid style={dotted,black},
+    xminorgrids,
+    xtick style={color=black},
+    xlabel={$P$, мм вд. ст.},
+    ymin = -300, ymax = 300,
+    ytick = {-400, -200, 0, 200, 400},
+    ytick style={color=black},
+    minor y tick num=4,
+    ymajorgrids,
+    minor y grid style={dotted,black},
+    yminorgrids,
+    ytick style={color=black},
+    ylabel={$\delta n$}
+]
+\addplot [semithick, black]
+table {%
+-700 187.299905706462
+800 -214.057035093099
+};
+\path [draw=red, semithick]
+(axis cs:-750,185.897359735107)
+--(axis cs:-650,185.897359735107);
+
+\path [draw=red, semithick]
+(axis cs:-650,157.262046203815)
+--(axis cs:-550,157.262046203815);
+
+\path [draw=red, semithick]
+(axis cs:-550,128.626732672522)
+--(axis cs:-450,128.626732672522);
+
+\path [draw=red, semithick]
+(axis cs:-450,100.765346533968)
+--(axis cs:-350,100.765346533968);
+
+\path [draw=red, semithick]
+(axis cs:-350,72.1300330026751)
+--(axis cs:-250,72.1300330026751);
+
+\path [draw=red, semithick]
+(axis cs:-250,46.5904290423332)
+--(axis cs:-150,46.5904290423332);
+
+\path [draw=red, semithick]
+(axis cs:-150,21.8247524747289)
+--(axis cs:-50,21.8247524747289);
+
+\path [draw=red, semithick]
+(axis cs:-50,-6.03663366382595)
+--(axis cs:50,-6.03663366382595);
+
+\path [draw=red, semithick]
+(axis cs:-50,-4.48877887835068)
+--(axis cs:50,-4.48877887835068);
+
+\path [draw=red, semithick]
+(axis cs:150,-65.6290429046238)
+--(axis cs:250,-65.6290429046238);
+
+\path [draw=red, semithick]
+(axis cs:250,-88.8468646867528)
+--(axis cs:350,-88.8468646867528);
+
+\path [draw=red, semithick]
+(axis cs:350,-116.708250825308)
+--(axis cs:450,-116.708250825308);
+
+\path [draw=red, semithick]
+(axis cs:450,-136.830363036486)
+--(axis cs:550,-136.830363036486);
+
+\path [draw=red, semithick]
+(axis cs:550,-160.048184818615)
+--(axis cs:650,-160.048184818615);
+
+\path [draw=red, semithick]
+(axis cs:650,-189.457425742645)
+--(axis cs:750,-189.457425742645);
+
+\path [draw=red, semithick]
+(axis cs:750,-214.997029702987)
+--(axis cs:850,-214.997029702987);
+
+\path [draw=red, semithick]
+(axis cs:-700,181.788388483841)
+--(axis cs:-700,190.006330986374);
+
+\path [draw=red, semithick]
+(axis cs:-600,153.200957854508)
+--(axis cs:-600,161.323134553122);
+
+\path [draw=red, semithick]
+(axis cs:-500,124.60597134239)
+--(axis cs:-500,132.647494002655);
+
+\path [draw=red, semithick]
+(axis cs:-400,96.776351726789)
+--(axis cs:-400,104.754341341146);
+
+\path [draw=red, semithick]
+(axis cs:-300,68.1658210252501)
+--(axis cs:-300,76.0942449801001);
+
+\path [draw=red, semithick]
+(axis cs:-200,42.6414715343356)
+--(axis cs:-200,50.5393865503307);
+
+\path [draw=red, semithick]
+(axis cs:-100,17.8843450131175)
+--(axis cs:-100,25.7651599363403);
+
+\path [draw=red, semithick]
+(axis cs:0,-9.97481836671395)
+--(axis cs:0,-2.09844896093795);
+
+\path [draw=red, semithick]
+(axis cs:0,-8.4268812327481)
+--(axis cs:0,-0.55067652395326);
+
+\path [draw=red, semithick]
+(axis cs:200,-69.5887553511494)
+--(axis cs:200,-61.6693304580981);
+
+\path [draw=red, semithick]
+(axis cs:300,-92.8245662993274)
+--(axis cs:300,-84.8691630741782);
+
+\path [draw=red, semithick]
+(axis cs:400,-120.714509955513)
+--(axis cs:400,-112.701991695103);
+
+\path [draw=red, semithick]
+(axis cs:500,-140.861891221982)
+--(axis cs:500,-132.79883485099);
+
+\path [draw=red, semithick]
+(axis cs:600,-164.113604192818)
+--(axis cs:600,-155.982765444412);
+
+\path [draw=red, semithick]
+(axis cs:700,-193.572865485838)
+--(axis cs:700,-185.341985999453);
+
+\path [draw=red, semithick]
+(axis cs:800,-219.16213243253)
+--(axis cs:800,-210.831926973444);
+
+\addplot [semithick, red, mark=*, mark size=1, mark options={solid}, only marks]
+table {%
+-700 185.897359735107
+-600 157.262046203815
+-500 128.626732672522
+-400 100.765346533968
+-300 72.1300330026751
+-200 46.5904290423332
+-100 21.8247524747289
+0 -6.03663366382595
+0 -4.48877887835068
+200 -65.6290429046238
+300 -88.8468646867528
+400 -116.708250825308
+500 -136.830363036486
+600 -160.048184818615
+700 -189.457425742645
+800 -214.997029702987
+};
+\end{axis}
+
+\end{tikzpicture}

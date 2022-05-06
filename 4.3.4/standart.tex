@@ -1,0 +1,53 @@
+\newpage\pagenumbering{gobble}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{data/approved.png}
+    \end{center}
+\end{figure}
+
+\begin{wrapfigure}{r}{size}
+    \centering
+    \includegraphics[width=size]{filename}
+    \caption{name}
+\end{wrapfigure}
+
+\begin{table}[H]
+    \captionsetup{font={small}, labelformat=fullparents, labelsep=fill, labelfont=bf, justification=raggedleft,
+                singlelinecheck=false, skip=-0.2cm}
+    \caption{name}
+    \begin{center}
+        \include{filename}
+    \end{center}
+\end{table}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=size]{filename}
+        \caption{name}
+    \end{center}
+\end{figure}
+
+% plot settings
+height=cm,
+tick align=inside,
+major tick length=0.2cm,
+minor tick length=0.1cm,
+tick pos=left,
+xmin=, xmax=,
+xtick={},
+minor x tick num=,
+xmajorgrids,
+minor x grid style={dotted,black},
+xminorgrids,
+xtick style={color=black},
+xlabel={},
+ymin=, ymax=,
+ytick={},
+ytick style={color=black},
+minor y tick num=,
+ymajorgrids,
+minor y grid style={dotted,black},
+yminorgrids,
+ytick style={color=black},
+ylabel={}

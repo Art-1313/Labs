@@ -1,0 +1,114 @@
+% This file was created with tikzplotlib v0.9.16.
+\begin{tikzpicture}
+
+\begin{axis}[
+    height=9.5cm,
+    tick align=inside,
+    major tick length=0.2cm,
+    minor tick length=0.1cm,
+    tick pos=left,
+    x grid style={white!69.0196078431373!black},
+    xmin=-8, xmax=8,
+    xtick={-8, -6, -4, -2, 0, 2, 4, 6, 8},
+    minor x tick num=3,
+    xmajorgrids,
+    minor x grid style={dotted,black},
+    xminorgrids,
+    xtick style={color=black},
+    xlabel={$m$},
+    ymin = 0, ymax = 550,
+    ytick = {0, 100, 200, 300, 400, 500, 600},
+    ytick style={color=black},
+    minor y tick num=4,
+    ymajorgrids,
+    minor y grid style={dotted,black},
+    yminorgrids,
+    ytick style={color=black},
+    ylabel={$z$, дел}
+]
+\addplot [semithick, black]
+table {%
+-7 38.4000000000001
+7 523.2
+};
+\path [draw=red, semithick]
+(axis cs:0,270)
+--(axis cs:0,280);
+
+\path [draw=red, semithick]
+(axis cs:1,306)
+--(axis cs:1,316);
+
+\path [draw=red, semithick]
+(axis cs:2,343)
+--(axis cs:2,353);
+
+\path [draw=red, semithick]
+(axis cs:3,376)
+--(axis cs:3,386);
+
+\path [draw=red, semithick]
+(axis cs:4,414)
+--(axis cs:4,424);
+
+\path [draw=red, semithick]
+(axis cs:5,448)
+--(axis cs:5,458);
+
+\path [draw=red, semithick]
+(axis cs:6,484)
+--(axis cs:6,494);
+
+\path [draw=red, semithick]
+(axis cs:7,524)
+--(axis cs:7,534);
+
+\path [draw=red, semithick]
+(axis cs:-1,245)
+--(axis cs:-1,255);
+
+\path [draw=red, semithick]
+(axis cs:-2,209)
+--(axis cs:-2,219);
+
+\path [draw=red, semithick]
+(axis cs:-3,173)
+--(axis cs:-3,183);
+
+\path [draw=red, semithick]
+(axis cs:-4,143)
+--(axis cs:-4,153);
+
+\path [draw=red, semithick]
+(axis cs:-5,104)
+--(axis cs:-5,114);
+
+\path [draw=red, semithick]
+(axis cs:-6,68)
+--(axis cs:-6,78);
+
+\path [draw=red, semithick]
+(axis cs:-7,30)
+--(axis cs:-7,40);
+
+\addplot [semithick, red, mark=*, mark size=1, mark options={solid}, only marks]
+table {%
+0 275
+1 311
+2 348
+3 381
+4 419
+5 453
+6 489
+7 529
+-1 250
+-2 214
+-3 178
+-4 148
+-5 109
+-6 73
+-7 35
+};
+\end{axis}
+
+\end{tikzpicture}
